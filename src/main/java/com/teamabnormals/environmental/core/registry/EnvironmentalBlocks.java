@@ -409,11 +409,11 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(modLoaded(Blocks.AZALEA_LEAVES, "woodworks"), HIBISCUS_LEAF_PILE)
 				.addItemsBefore(of(Blocks.AZALEA), WILLOW_SAPLING, PINE_SAPLING, CHEERFUL_PLUM_SAPLING, PLUM_SAPLING, MOODY_PLUM_SAPLING, PINK_WISTERIA_SAPLING, PURPLE_WISTERIA_SAPLING, BLUE_WISTERIA_SAPLING, WHITE_WISTERIA_SAPLING);
 
-		CreativeModeTabContentsPopulator.mod("incubation_1")
+		CreativeModeTabContentsPopulator.mod("incubation_" + Environmental.MOD_ID)
 				.tab(NATURAL_BLOCKS)
 				.addItemsAfter(ofID(EnvironmentalConstants.CHICKEN_EGG_CRATE), DUCK_EGG_CRATE);
 
-		CreativeModeTabContentsPopulator.mod("woodworks_1")
+		CreativeModeTabContentsPopulator.mod("woodworks_" + Environmental.MOD_ID)
 				.tab(FUNCTIONAL_BLOCKS)
 				.addItemsBefore(ofID(EnvironmentalConstants.BAMBOO_LADDER), WILLOW_LADDER, PINE_LADDER, PLUM_LADDER, WISTERIA_LADDER)
 				.addItemsBefore(ofID(EnvironmentalConstants.BAMBOO_BEEHIVE), WILLOW_BEEHIVE, PINE_BEEHIVE, PLUM_BEEHIVE, WISTERIA_BEEHIVE)
