@@ -59,8 +59,8 @@ public abstract class AbstractDeer extends Animal {
 			return !entity.isDiscrete() && EntitySelector.NO_CREATIVE_OR_SPECTATOR.test(entity);
 		}
 	};
-	private static final TargetingConditions AVOID_ENTITY_TARGETING = TargetingConditions.forCombat().range(10.0D).selector(AVOID_ENTITY_PREDICATE);
-	private static final TargetingConditions TRUSTING_AVOID_ENTITY_TARGETING = TargetingConditions.forCombat().range(10.0D).selector(TRUSTING_AVOID_ENTITY_PREDICATE);
+	private static final TargetingConditions AVOID_ENTITY_TARGETING = TargetingConditions.forNonCombat().range(10.0D).selector(AVOID_ENTITY_PREDICATE);
+	private static final TargetingConditions TRUSTING_AVOID_ENTITY_TARGETING = TargetingConditions.forNonCombat().range(10.0D).selector(TRUSTING_AVOID_ENTITY_PREDICATE);
 
 	private static final EntityDataAccessor<Integer> TARGET_NECK_ANGLE = SynchedEntityData.defineId(AbstractDeer.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> FLOWER_AMOUNT = SynchedEntityData.defineId(AbstractDeer.class, EntityDataSerializers.INT);
