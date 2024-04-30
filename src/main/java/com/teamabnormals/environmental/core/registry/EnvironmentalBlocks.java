@@ -282,7 +282,8 @@ public class EnvironmentalBlocks {
 	public static final RegistryObject<Block> POTTED_MOODY_PLUM_SAPLING = HELPER.createBlockNoItem("potted_moody_plum_sapling", () -> new FlowerPotBlock(MOODY_PLUM_SAPLING.get(), PropertyUtil.flowerPot()));
 	public static final RegistryObject<Block> MOODY_PLUM_LEAF_PILE = HELPER.createBlock("moody_plum_leaf_pile", () -> new LeafPileBlock(EnvironmentalProperties.PLUM.leafPile()));
 
-	public static final RegistryObject<Block> CHERRY_CRATE = HELPER.createBlock("cherry_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> PLUM_CRATE = HELPER.createBlock("plum_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> CHERRY_CRATE = HELPER.createBlock("cherry_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F).sound(SoundType.WOOD)));
 
 	// Wisteria //
 
@@ -357,7 +358,7 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(of(Blocks.BAMBOO_BLOCK),
 						WISTERIA_STAIRS, WISTERIA_SLAB, WISTERIA_FENCE, WISTERIA_FENCE_GATE, WISTERIA_DOOR, WISTERIA_TRAPDOOR, WISTERIA_PRESSURE_PLATE, WISTERIA_BUTTON
 				)
-				.addItemsBefore(of(Blocks.SANDSTONE), GRASS_THATCH, GRASS_THATCH_STAIRS, GRASS_THATCH_SLAB, CATTAIL_THATCH, CATTAIL_THATCH_STAIRS, CATTAIL_THATCH_SLAB, DUCKWEED_THATCH, DUCKWEED_THATCH_SLAB, DUCKWEED_THATCH_STAIRS)
+				.addItemsBefore(of(Blocks.SANDSTONE), GRASS_THATCH, GRASS_THATCH_STAIRS, GRASS_THATCH_SLAB, CATTAIL_THATCH, CATTAIL_THATCH_STAIRS, CATTAIL_THATCH_SLAB, DUCKWEED_THATCH, DUCKWEED_THATCH_STAIRS, DUCKWEED_THATCH_SLAB)
 				.tab(FUNCTIONAL_BLOCKS)
 				.addItemsBefore(of(Blocks.BAMBOO_SIGN),
 						WILLOW_SIGNS.getFirst(), WILLOW_HANGING_SIGNS.getFirst(),
@@ -383,7 +384,7 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(of(Blocks.PITCHER_PLANT), PINK_DELPHINIUM, PURPLE_DELPHINIUM, BLUE_DELPHINIUM, WHITE_DELPHINIUM, BIRD_OF_PARADISE)
 				.addItemsBefore(of(Blocks.MUSHROOM_STEM), WILLOW_LOG, PINE_LOG, PLUM_LOG, WISTERIA_LOG)
 				.addItemsBefore(of(Blocks.MELON), PINECONE, WAXED_PINECONE)
-				.addItemsAfter(modLoaded(Blocks.HAY_BLOCK, "berry_good"), CHERRY_CRATE)
+				.addItemsAfter(modLoaded(Blocks.HAY_BLOCK, "berry_good"), PLUM_CRATE, CHERRY_CRATE)
 				.addItemsAfter(of(Blocks.HAY_BLOCK), CATTAIL_FLUFF_BLOCK, YAK_HAIR_BLOCK, YAK_HAIR_RUG)
 				.addItemsBefore(of(Blocks.AZALEA_LEAVES), WILLOW_LEAVES)
 				.addItemsBefore(modLoaded(Blocks.AZALEA_LEAVES, "woodworks"), WILLOW_LEAF_PILE)
@@ -409,11 +410,11 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(modLoaded(Blocks.AZALEA_LEAVES, "woodworks"), HIBISCUS_LEAF_PILE)
 				.addItemsBefore(of(Blocks.AZALEA), WILLOW_SAPLING, PINE_SAPLING, CHEERFUL_PLUM_SAPLING, PLUM_SAPLING, MOODY_PLUM_SAPLING, PINK_WISTERIA_SAPLING, PURPLE_WISTERIA_SAPLING, BLUE_WISTERIA_SAPLING, WHITE_WISTERIA_SAPLING);
 
-		CreativeModeTabContentsPopulator.mod("incubation_1")
+		CreativeModeTabContentsPopulator.mod("incubation_" + Environmental.MOD_ID)
 				.tab(NATURAL_BLOCKS)
 				.addItemsAfter(ofID(EnvironmentalConstants.CHICKEN_EGG_CRATE), DUCK_EGG_CRATE);
 
-		CreativeModeTabContentsPopulator.mod("woodworks_1")
+		CreativeModeTabContentsPopulator.mod("woodworks_" + Environmental.MOD_ID)
 				.tab(FUNCTIONAL_BLOCKS)
 				.addItemsBefore(ofID(EnvironmentalConstants.BAMBOO_LADDER), WILLOW_LADDER, PINE_LADDER, PLUM_LADDER, WISTERIA_LADDER)
 				.addItemsBefore(ofID(EnvironmentalConstants.BAMBOO_BEEHIVE), WILLOW_BEEHIVE, PINE_BEEHIVE, PLUM_BEEHIVE, WISTERIA_BEEHIVE)

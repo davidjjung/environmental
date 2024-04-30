@@ -15,21 +15,21 @@ public class EnvironmentalBiomeTags {
 
 	public static final TagKey<Biome> HAS_LOG_CABIN = biomeTag("has_structure/log_cabin");
 
-	public static final TagKey<Biome> HAS_SLABFISH = biomeTag("has_animal/slabfish");
-	public static final TagKey<Biome> HAS_DUCK = biomeTag("has_animal/duck");
-	public static final TagKey<Biome> HAS_DEER = biomeTag("has_animal/deer");
-	public static final TagKey<Biome> HAS_MUDDY_PIG = biomeTag("has_animal/muddy_pig");
-	public static final TagKey<Biome> HAS_REINDEER = biomeTag("has_animal/reindeer");
-	public static final TagKey<Biome> HAS_TAPIR = biomeTag("has_animal/tapir");
-	public static final TagKey<Biome> HAS_YAK = biomeTag("has_animal/yak");
-	public static final TagKey<Biome> HAS_ZEBRA = biomeTag("has_animal/zebra");
+	public static final TagKey<Biome> HAS_SLABFISH = biomeTag("has_spawn/slabfish");
+	public static final TagKey<Biome> HAS_DUCK = biomeTag("has_spawn/duck");
+	public static final TagKey<Biome> HAS_DEER = biomeTag("has_spawn/deer");
+	public static final TagKey<Biome> HAS_MUDDY_PIG = biomeTag("has_spawn/muddy_pig");
+	public static final TagKey<Biome> HAS_REINDEER = biomeTag("has_spawn/reindeer");
+	public static final TagKey<Biome> HAS_TAPIR = biomeTag("has_spawn/tapir");
+	public static final TagKey<Biome> HAS_YAK = biomeTag("has_spawn/yak");
+	public static final TagKey<Biome> HAS_ZEBRA = biomeTag("has_spawn/zebra");
 
 	public static final TagKey<Biome> WITHOUT_DEER = biomeTag("without_animal/deer");
 
-	public static final TagKey<Biome> HAS_PIG = biomeTag("has_animal/pig");
-	public static final TagKey<Biome> HAS_COW = biomeTag("has_animal/cow");
-	public static final TagKey<Biome> HAS_CHICKEN = biomeTag("has_animal/chicken");
-	public static final TagKey<Biome> HAS_SHEEP = biomeTag("has_animal/sheep");
+	public static final TagKey<Biome> HAS_PIG = biomeTag("has_spawn/pig");
+	public static final TagKey<Biome> HAS_COW = biomeTag("has_spawn/cow");
+	public static final TagKey<Biome> HAS_CHICKEN = biomeTag("has_spawn/chicken");
+	public static final TagKey<Biome> HAS_SHEEP = biomeTag("has_spawn/sheep");
 
 	public static final TagKey<Biome> HAS_CATTAILS = biomeTag("has_feature/cattails");
 	public static final TagKey<Biome> HAS_CUP_LICHEN = biomeTag("has_feature/cup_lichen");

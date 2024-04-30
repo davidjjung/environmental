@@ -71,6 +71,7 @@ public class EnvironmentalCompat {
 		DataUtil.registerCompostable(EnvironmentalBlocks.CHERRY_CRATE.get(), 1.0F);
 
 		DataUtil.registerCompostable(EnvironmentalItems.PLUM.get(), 0.65F);
+		DataUtil.registerCompostable(EnvironmentalBlocks.PLUM_CRATE.get(), 1.0F);
 
 		DataUtil.registerCompostable(EnvironmentalItems.CATTAIL_FLUFF.get(), 0.30F);
 		DataUtil.registerCompostable(EnvironmentalBlocks.CATTAIL_FLUFF_BLOCK.get(), 1.0F);
@@ -201,6 +202,7 @@ public class EnvironmentalCompat {
 		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_FENCE_GATE.get(), 5, 20);
 		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_BOOKSHELF.get(), 30, 20);
 		DataUtil.registerFlammable(EnvironmentalBlocks.CHERRY_CRATE.get(), 5, 20);
+		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_CRATE.get(), 5, 20);
 		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_BEEHIVE.get(), 5, 20);
 		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_LEAF_PILE.get(), 30, 60);
 		DataUtil.registerFlammable(EnvironmentalBlocks.PLUM_BOARDS.get(), 5, 20);

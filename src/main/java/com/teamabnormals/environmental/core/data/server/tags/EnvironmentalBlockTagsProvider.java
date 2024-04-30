@@ -97,6 +97,7 @@ public class EnvironmentalBlockTagsProvider extends BlockTagsProvider {
 		this.tag(CACTUS_BOBBLE_PLANTABLE_ON).add(Blocks.CACTUS).addOptional(new ResourceLocation("atmospheric", "snowy_cactus"));
 		this.tag(CATTAIL_PLANTABLE_ON).addTag(BlockTags.DIRT).addTag(BlockTags.SAND).add(Blocks.FARMLAND);
 		this.tag(MUD_REPLACEABLES).add(Blocks.GRASS_BLOCK, Blocks.DIRT, Blocks.SAND, Blocks.CLAY);
+		this.tag(PINECONE_GOLEM_BASE_BLOCKS).add(PINECONE.get());
 
 		this.tag(HIBISCUSES).add(YELLOW_HIBISCUS.get(), ORANGE_HIBISCUS.get(), RED_HIBISCUS.get(), PINK_HIBISCUS.get(), MAGENTA_HIBISCUS.get(), PURPLE_HIBISCUS.get());
 		this.tag(WALL_HIBISCUSES).add(YELLOW_WALL_HIBISCUS.get(), ORANGE_WALL_HIBISCUS.get(), RED_WALL_HIBISCUS.get(), PINK_WALL_HIBISCUS.get(), MAGENTA_WALL_HIBISCUS.get(), PURPLE_WALL_HIBISCUS.get());

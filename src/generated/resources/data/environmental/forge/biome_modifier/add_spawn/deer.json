@@ -1,11 +1,11 @@
 {
   "type": "environmental:add_spawns_ignore",
-  "biomes": "#environmental:has_animal/deer",
+  "biomes": "#environmental:has_spawn/deer",
   "ignored_biomes": "#environmental:without_animal/deer",
   "spawners": {
     "type": "environmental:deer",
     "maxCount": 4,
     "minCount": 4,
-    "weight": 16
+    "weight": 12
   }
 }
