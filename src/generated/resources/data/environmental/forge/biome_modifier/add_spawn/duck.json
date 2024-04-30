@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#environmental:has_animal/duck",
+  "biomes": "#environmental:has_spawn/duck",
   "spawners": {
     "type": "environmental:duck",
     "maxCount": 4,

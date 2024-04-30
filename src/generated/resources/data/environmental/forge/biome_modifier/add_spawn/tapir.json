@@ -1,6 +1,6 @@
 {
   "type": "forge:add_spawns",
-  "biomes": "#environmental:has_animal/tapir",
+  "biomes": "#environmental:has_spawn/tapir",
   "spawners": {
     "type": "environmental:tapir",
     "maxCount": 2,
