@@ -90,6 +90,7 @@ public class EnvironmentalBlockStateProvider extends BlueprintBlockStateProvider
 		this.block(BURIED_TRUFFLE);
 		this.block(CHISELED_MUD_BRICKS);
 		this.directionalBlock(CHERRY_CRATE);
+		this.directionalBlock(PLUM_CRATE);
 		this.cubeBottomTopBlock(DUCK_EGG_CRATE);
 
 		this.crossBlock(MYCELIUM_SPROUTS);
