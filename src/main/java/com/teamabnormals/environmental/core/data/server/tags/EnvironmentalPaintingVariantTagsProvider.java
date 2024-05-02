@@ -19,6 +19,10 @@ public class EnvironmentalPaintingVariantTagsProvider extends PaintingVariantTag
 
 	@Override
 	public void addTags(Provider provider) {
-		this.tag(PaintingVariantTags.PLACEABLE).add(SNAKE_BLOCK.getKey(), SLABFISH.getKey(), ARCHIVE.getKey(), OPTIMAL_AERODYNAMICS.getKey(), IN_PLAINS_SIGHT.getKey(), THE_PLACE_WITHIN_THE_PINES.getKey());
+		this.tag(PaintingVariantTags.PLACEABLE).add(
+				SNAKE_BLOCK.getKey(), SLABFISH.getKey(), ARCHIVE.getKey(),
+				OPTIMAL_AERODYNAMICS.getKey(), IN_PLAINS_SIGHT.getKey(), THE_PLACE_WITHIN_THE_PINES.getKey(),
+				BOUQUET.getKey(), BOUQUET2.getKey(), LONE_PLUM.getKey(), MARSHPATH.getKey()
+		);
 	}
 }

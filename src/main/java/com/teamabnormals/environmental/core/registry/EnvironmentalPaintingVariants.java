@@ -15,4 +15,8 @@ public class EnvironmentalPaintingVariants {
 	public static final RegistryObject<PaintingVariant> OPTIMAL_AERODYNAMICS = PAINTING_VARIANTS.register("optimal_aerodynamics", () -> new PaintingVariant(32, 48));
 	public static final RegistryObject<PaintingVariant> IN_PLAINS_SIGHT = PAINTING_VARIANTS.register("in_plains_sight", () -> new PaintingVariant(32, 16));
 	public static final RegistryObject<PaintingVariant> THE_PLACE_WITHIN_THE_PINES = PAINTING_VARIANTS.register("the_place_within_the_pines", () -> new PaintingVariant(48, 16));
+	public static final RegistryObject<PaintingVariant> BOUQUET = PAINTING_VARIANTS.register("bouquet", () -> new PaintingVariant(16, 32));
+	public static final RegistryObject<PaintingVariant> BOUQUET2 = PAINTING_VARIANTS.register("bouquet2", () -> new PaintingVariant(16, 16));
+	public static final RegistryObject<PaintingVariant> LONE_PLUM = PAINTING_VARIANTS.register("lone_plum", () -> new PaintingVariant(48, 32));
+	public static final RegistryObject<PaintingVariant> MARSHPATH = PAINTING_VARIANTS.register("marshpath", () -> new PaintingVariant(32, 48));
 }
