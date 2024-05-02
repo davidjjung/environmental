@@ -128,6 +128,9 @@ public class DwarfSprucePlantBlock extends BushBlock implements DwarfSpruceBlock
 					blockstate = RedstoneDwarfSpruceBlock.setLitPoweredState(blockstate, level, pos);
 				level.setBlockAndUpdate(pos, blockstate);
 
+				level.playSound(null, pos, SoundEvents.AZALEA_LEAVES_PLACE, SoundSource.BLOCKS, 0.4F, 1.0F);
+				level.playSound(null, pos, SoundEvents.WOOD_PLACE, SoundSource.BLOCKS, 0.8F, 1.0F);
+
 				level.gameEvent(player, GameEvent.BLOCK_CHANGE, pos);
 				player.awardStat(Stats.ITEM_USED.get(item));
 				return InteractionResult.sidedSuccess(level.isClientSide);
