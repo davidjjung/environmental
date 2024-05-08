@@ -31,6 +31,7 @@ import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.navigation.GroundPathNavigation;
 import net.minecraft.world.entity.ai.navigation.PathNavigation;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -88,6 +89,7 @@ public class Tapir extends Animal {
 		this.goalSelector.addGoal(2, new TapirSniffForFloraGoal(this));
 		this.goalSelector.addGoal(3, new TapirHuntFloraGoal(this));
 		this.goalSelector.addGoal(4, new TapirTemptGoal(this, 1.0D));
+		this.goalSelector.addGoal(4, new AvoidEntityGoal<>(this, Wolf.class, 10.0F, 1.6D, 1.4D, (entity) -> !((Wolf) entity).isTame()));
 		this.goalSelector.addGoal(5, new FollowParentGoal(this, 1.1D));
 		this.goalSelector.addGoal(6, new RandomStrollGoal(this, 1.0D));
 		this.goalSelector.addGoal(7, new LookAtPlayerGoal(this, Player.class, 6.0F));

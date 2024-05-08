@@ -5,6 +5,10 @@
     "environmental:archive",
     "environmental:optimal_aerodynamics",
     "environmental:in_plains_sight",
-    "environmental:the_place_within_the_pines"
+    "environmental:the_place_within_the_pines",
+    "environmental:bouquet",
+    "environmental:bouquet2",
+    "environmental:lone_plum",
+    "environmental:marshpath"
   ]
 }
