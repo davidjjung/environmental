@@ -6,6 +6,7 @@ import com.teamabnormals.blueprint.core.util.PropertyUtil;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
 import com.teamabnormals.environmental.core.Environmental;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
@@ -48,9 +49,9 @@ public class EnvironmentalProperties {
 
 	public static final BlockBehaviour.Properties PINECONE = Block.Properties.of().mapColor(MapColor.DIRT).strength(1.5F).sound(SoundType.WOOD).ignitedByLava();
 
-	public static final BlockBehaviour.Properties DIRT_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.65F).sound(SoundType.GRAVEL).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
-	public static final BlockBehaviour.Properties MYCELIUM_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
-	public static final BlockBehaviour.Properties PODZOL_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
+	public static final BlockBehaviour.Properties DIRT_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.65F).sound(SoundType.GRAVEL).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
+	public static final BlockBehaviour.Properties MYCELIUM_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
+	public static final BlockBehaviour.Properties PODZOL_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
 
 	public static final BlockBehaviour.Properties DIRT_BRICKS = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL);
 	public static final BlockBehaviour.Properties MUD_BRICKS = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(SoundType.MUD_BRICKS);
