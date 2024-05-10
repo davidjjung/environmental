@@ -83,13 +83,6 @@ public class DwarfSpruceHeadBlock extends DwarfSpruceBlock {
 	}
 
 	@Override
-	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		BlockPos belowpos = pos.below();
-		BlockState belowstate = level.getBlockState(belowpos);
-		return belowstate.getBlock() instanceof DwarfSpruceBlock || belowstate.isFaceSturdy(level, belowpos, Direction.UP) || belowstate.getBlock() instanceof LeavesBlock;
-	}
-
-	@Override
 	public BlockState getStateForPlacement(BlockPlaceContext context) {
 		Level level = context.getLevel();
 		BlockPos pos = context.getClickedPos();

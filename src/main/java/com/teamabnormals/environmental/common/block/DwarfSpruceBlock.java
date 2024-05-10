@@ -17,9 +17,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.BonemealableBlock;
 import net.minecraft.world.level.block.BushBlock;
+import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.storage.loot.LootParams;
@@ -50,6 +52,13 @@ public abstract class DwarfSpruceBlock extends BushBlock implements Bonemealable
 	public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
 		if (!state.canSurvive(level, pos))
 			level.destroyBlock(pos, true);
+	}
+
+	@Override
+	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
+		BlockPos belowpos = pos.below();
+		BlockState belowstate = level.getBlockState(belowpos);
+		return belowstate.getBlock() instanceof DwarfSpruceBlock || belowstate.isFaceSturdy(level, belowpos, Direction.UP) || belowstate.getBlock() instanceof LeavesBlock;
 	}
 
 	@Override

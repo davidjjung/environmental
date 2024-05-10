@@ -12,7 +12,6 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
@@ -58,13 +57,6 @@ public class DwarfSprucePlantBlock extends DwarfSpruceBlock {
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
 		return SHAPE;
-	}
-
-	@Override
-	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
-		BlockPos belowpos = pos.below();
-		BlockState belowstate = level.getBlockState(belowpos);
-		return belowstate.getBlock() instanceof DwarfSpruceBlock || belowstate.isFaceSturdy(level, belowpos, Direction.UP) || belowstate.getBlock() instanceof LeavesBlock;
 	}
 
 	@Override
