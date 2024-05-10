@@ -376,7 +376,7 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(of(Blocks.FARMLAND), BURIED_TRUFFLE)
 				.addItemsAfter(of(Blocks.LILY_PAD), LARGE_LILY_PAD, GIANT_LILY_PAD, DUCKWEED)
 				.addItemsAfter(of(Blocks.SUGAR_CANE), CATTAIL)
-				.addItemsAfter(of(Blocks.FERN), DWARF_SPRUCE)
+				.addItemsAfter(of(Blocks.FERN), MYCELIUM_SPROUTS, DWARF_SPRUCE)
 				.addItemsAfter(of(Blocks.TALL_GRASS), GIANT_TALL_GRASS)
 				.addItemsAfter(of(Blocks.GLOW_LICHEN), CUP_LICHEN)
 				.addItemsBefore(of(Blocks.TORCHFLOWER), BLUEBELL, DIANTHUS, VIOLET, TASSELFLOWER, RED_LOTUS_FLOWER, WHITE_LOTUS_FLOWER, CARTWHEEL,
@@ -386,6 +386,7 @@ public class EnvironmentalBlocks {
 				.addItemsBefore(of(Blocks.MELON), PINECONE, WAXED_PINECONE)
 				.addItemsAfter(modLoaded(Blocks.HAY_BLOCK, "berry_good"), PLUM_CRATE, CHERRY_CRATE)
 				.addItemsAfter(of(Blocks.HAY_BLOCK), CATTAIL_FLUFF_BLOCK, YAK_HAIR_BLOCK, YAK_HAIR_RUG)
+				.addItemsAfter(of(Blocks.VINE), HANGING_WILLOW_LEAVES, PINK_HANGING_WISTERIA_LEAVES, PURPLE_HANGING_WISTERIA_LEAVES, BLUE_HANGING_WISTERIA_LEAVES, WHITE_HANGING_WISTERIA_LEAVES)
 				.addItemsBefore(of(Blocks.AZALEA_LEAVES), WILLOW_LEAVES)
 				.addItemsBefore(modLoaded(Blocks.AZALEA_LEAVES, "woodworks"), WILLOW_LEAF_PILE)
 				.addItemsBefore(of(Blocks.AZALEA_LEAVES), PINE_LEAVES)
