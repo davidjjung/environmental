@@ -68,7 +68,7 @@ public class EnvironmentalBlocks {
 	public static final RegistryObject<Block> CATTAIL = HELPER.createBlock("cattail", () -> new CattailBlock(EnvironmentalProperties.CATTAIL));
 	public static final RegistryObject<Block> CATTAIL_STALK = HELPER.createBlockNoItem("cattail_stalk", () -> new CattailStalkBlock(EnvironmentalProperties.CATTAIL_STALK));
 	public static final RegistryObject<Block> POTTED_CATTAIL = HELPER.createBlockNoItem("potted_cattail", () -> new FlowerPotBlock(EnvironmentalBlocks.CATTAIL.get(), PropertyUtil.flowerPot()));
-	public static final RegistryObject<Block> CATTAIL_FLUFF_BLOCK = HELPER.createBlock("cattail_fluff_block", () -> new Block(Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(0.5F).sound(SoundType.WOOL)));
+	public static final RegistryObject<Block> CATTAIL_FLUFF_BLOCK = HELPER.createBlock("cattail_fluff_block", () -> new Block(Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(0.5F).sound(SoundType.WOOL).ignitedByLava()));
 
 	// Foliage //
 
@@ -100,7 +100,7 @@ public class EnvironmentalBlocks {
 	// Misc //
 
 	public static final RegistryObject<Block> BURIED_TRUFFLE = HELPER.createBlock("buried_truffle", () -> new Block(EnvironmentalProperties.BURIED_TRUFFLE));
-	public static final RegistryObject<Block> DUCK_EGG_CRATE = HELPER.createBlock("duck_egg_crate", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.5F).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> DUCK_EGG_CRATE = HELPER.createBlock("duck_egg_crate", () -> new Block(Block.Properties.of().mapColor(MapColor.COLOR_LIGHT_BLUE).strength(1.5F).sound(SoundType.WOOD).ignitedByLava()));
 
 	// Decorations //
 
@@ -282,8 +282,8 @@ public class EnvironmentalBlocks {
 	public static final RegistryObject<Block> POTTED_MOODY_PLUM_SAPLING = HELPER.createBlockNoItem("potted_moody_plum_sapling", () -> new FlowerPotBlock(MOODY_PLUM_SAPLING.get(), PropertyUtil.flowerPot()));
 	public static final RegistryObject<Block> MOODY_PLUM_LEAF_PILE = HELPER.createBlock("moody_plum_leaf_pile", () -> new LeafPileBlock(EnvironmentalProperties.PLUM.leafPile()));
 
-	public static final RegistryObject<Block> PLUM_CRATE = HELPER.createBlock("plum_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.WOOD)));
-	public static final RegistryObject<Block> CHERRY_CRATE = HELPER.createBlock("cherry_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F).sound(SoundType.WOOD)));
+	public static final RegistryObject<Block> PLUM_CRATE = HELPER.createBlock("plum_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.COLOR_RED).strength(1.5F).sound(SoundType.WOOD).ignitedByLava()));
+	public static final RegistryObject<Block> CHERRY_CRATE = HELPER.createBlock("cherry_crate", () -> new BlueprintDirectionalBlock(Block.Properties.of().mapColor(MapColor.TERRACOTTA_WHITE).strength(1.5F).sound(SoundType.WOOD).ignitedByLava()));
 
 	// Wisteria //
 
