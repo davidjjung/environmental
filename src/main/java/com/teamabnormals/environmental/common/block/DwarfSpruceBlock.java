@@ -58,7 +58,7 @@ public abstract class DwarfSpruceBlock extends BushBlock implements Bonemealable
 	public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 		BlockPos belowpos = pos.below();
 		BlockState belowstate = level.getBlockState(belowpos);
-		return belowstate.getBlock() instanceof DwarfSpruceBlock || belowstate.isFaceSturdy(level, belowpos, Direction.UP) || belowstate.getBlock() instanceof LeavesBlock;
+		return belowstate.getBlock() instanceof DwarfSpruceBlock || canSupportCenter(level, belowpos, Direction.UP) || belowstate.getBlock() instanceof LeavesBlock;
 	}
 
 	@Override
