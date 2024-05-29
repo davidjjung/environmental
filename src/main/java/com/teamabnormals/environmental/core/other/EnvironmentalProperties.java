@@ -6,11 +6,13 @@ import com.teamabnormals.blueprint.core.util.PropertyUtil;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
 import com.teamabnormals.environmental.core.Environmental;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.PushReaction;
 
 public class EnvironmentalProperties {
 	public static final BlockSetType WILLOW_BLOCK_SET = blockSetType("willow");
@@ -33,29 +35,29 @@ public class EnvironmentalProperties {
 
 	public static final WoodSetProperties HIBISCUS = WoodSetProperties.builder(MapColor.COLOR_GREEN).build();
 
-	public static final BlockBehaviour.Properties CATTAIL = BlockBehaviour.Properties.of().instabreak().noCollission().randomTicks().sound(SoundType.WET_GRASS).offsetType(BlockBehaviour.OffsetType.XZ);
-	public static final BlockBehaviour.Properties CATTAIL_STALK = BlockBehaviour.Properties.of().instabreak().noCollission().sound(SoundType.WET_GRASS).offsetType(BlockBehaviour.OffsetType.XZ);
+	public static final BlockBehaviour.Properties CATTAIL = BlockBehaviour.Properties.of().instabreak().noCollission().randomTicks().sound(SoundType.WET_GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties CATTAIL_STALK = BlockBehaviour.Properties.of().instabreak().noCollission().sound(SoundType.WET_GRASS).offsetType(BlockBehaviour.OffsetType.XZ).pushReaction(PushReaction.DESTROY);
 
-	public static final BlockBehaviour.Properties DUCKWEED = BlockBehaviour.Properties.of().strength(0.0F).noCollission().sound(SoundType.CROP);
-	public static final BlockBehaviour.Properties MYCELIUM_SPROUTS = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).noCollission().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.XZ);
-	public static final BlockBehaviour.Properties CUP_LICHEN = BlockBehaviour.Properties.of().mapColor(MapColor.GLOW_LICHEN).noCollission().instabreak().sound(SoundType.NETHER_SPROUTS);
-	public static final BlockBehaviour.Properties CACTUS_BOBBLE = BlockBehaviour.Properties.of().strength(0.0F).noCollission().sound(SoundType.WOOL);
-	public static final BlockBehaviour.Properties DWARF_SPRUCE = BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.GRASS);
+	public static final BlockBehaviour.Properties DUCKWEED = BlockBehaviour.Properties.of().instabreak().noCollission().sound(SoundType.CROP).pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties MYCELIUM_SPROUTS = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).replaceable().noCollission().instabreak().sound(SoundType.NETHER_SPROUTS).offsetType(BlockBehaviour.OffsetType.XZ).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties CUP_LICHEN = BlockBehaviour.Properties.of().mapColor(MapColor.GLOW_LICHEN).replaceable().noCollission().instabreak().sound(SoundType.NETHER_SPROUTS).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties CACTUS_BOBBLE = BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.WOOL).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties DWARF_SPRUCE = BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY);
 
-	public static final BlockBehaviour.Properties DELPHINIUMS = BlockBehaviour.Properties.of().noCollission().strength(0.0F).sound(SoundType.GRASS);
-	public static final BlockBehaviour.Properties WALL_HIBISCUS = Block.Properties.of().noCollission().instabreak().sound(SoundType.GRASS);
+	public static final BlockBehaviour.Properties DELPHINIUMS = BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties WALL_HIBISCUS = Block.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
 
-	public static final BlockBehaviour.Properties PINECONE = Block.Properties.of().mapColor(MapColor.DIRT).strength(1.5F).sound(SoundType.WOOD);
+	public static final BlockBehaviour.Properties PINECONE = Block.Properties.of().mapColor(MapColor.DIRT).strength(1.5F).sound(SoundType.WOOD).ignitedByLava();
 
-	public static final BlockBehaviour.Properties DIRT_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.65F).sound(SoundType.GRAVEL).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
-	public static final BlockBehaviour.Properties MYCELIUM_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
-	public static final BlockBehaviour.Properties PODZOL_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::never).isViewBlocking(PropertyUtil::never);
+	public static final BlockBehaviour.Properties DIRT_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.65F).sound(SoundType.GRAVEL).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
+	public static final BlockBehaviour.Properties MYCELIUM_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_PURPLE).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
+	public static final BlockBehaviour.Properties PODZOL_PATH = BlockBehaviour.Properties.of().mapColor(MapColor.PODZOL).strength(0.65F).sound(SoundType.GRASS).isViewBlocking(PropertyUtil::always).isSuffocating(PropertyUtil::always);
 
 	public static final BlockBehaviour.Properties DIRT_BRICKS = BlockBehaviour.Properties.of().mapColor(MapColor.DIRT).strength(0.5F).sound(SoundType.GRAVEL);
 	public static final BlockBehaviour.Properties MUD_BRICKS = BlockBehaviour.Properties.of().mapColor(MapColor.TERRACOTTA_LIGHT_GRAY).requiresCorrectToolForDrops().strength(1.5F, 3.0F).sound(SoundType.MUD_BRICKS);
 
-	public static final BlockBehaviour.Properties YAK_HAIR_BLOCK = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.8F).sound(SoundType.WOOL).noOcclusion();
-	public static final BlockBehaviour.Properties YAK_HAIR_RUG = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.1F).sound(SoundType.WOOL).noOcclusion();
+	public static final BlockBehaviour.Properties YAK_HAIR_BLOCK = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.8F).sound(SoundType.WOOL).noOcclusion().ignitedByLava();
+	public static final BlockBehaviour.Properties YAK_HAIR_RUG = BlockBehaviour.Properties.of().mapColor(MapColor.COLOR_BROWN).strength(0.1F).sound(SoundType.WOOL).noOcclusion().ignitedByLava();
 
 	public static final BlockBehaviour.Properties GRASS_THATCH = PropertyUtil.thatch(MapColor.COLOR_YELLOW, SoundType.GRASS);
 	public static final BlockBehaviour.Properties DUCKWEED_THATCH = PropertyUtil.thatch(MapColor.COLOR_GREEN, SoundType.GRASS);
