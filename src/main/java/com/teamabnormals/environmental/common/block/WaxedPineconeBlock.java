@@ -24,7 +24,6 @@ public class WaxedPineconeBlock extends Block {
 			Level level = context.getLevel();
 			Player player = context.getPlayer();
 			BlockPos pos = context.getClickedPos();
-			level.playSound(player, pos, SoundEvents.AXE_STRIP, SoundSource.BLOCKS, 1.0F, 1.0F);
 			level.levelEvent(player, 3004, pos, 0);
 			return EnvironmentalBlocks.PINECONE.get().defaultBlockState();
 		}
