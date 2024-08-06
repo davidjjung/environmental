@@ -23,6 +23,8 @@ public class EnvironmentalBlockTags {
 	public static final TagKey<Block> WISTERIA_LOGS = blockTag("wisteria_logs");
 	public static final TagKey<Block> PLUM_LOGS = blockTag("plum_logs");
 
+	public static final TagKey<Block> STRIPPED_LOGS = TagUtil.blockTag("forge", "stripped_logs");
+
 	private static TagKey<Block> blockTag(String tagName) {
 		return TagUtil.blockTag(Environmental.MOD_ID, tagName);
 	}
