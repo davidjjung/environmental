@@ -3,7 +3,6 @@ package com.teamabnormals.environmental.common.slabfish;
 import com.teamabnormals.environmental.common.slabfish.condition.SlabfishConditionContext;
 import com.teamabnormals.environmental.core.registry.EnvironmentalRegistries;
 import com.teamabnormals.environmental.core.registry.slabfish.EnvironmentalSlabfishSweaters;
-import com.teamabnormals.environmental.core.registry.slabfish.EnvironmentalSlabfishTypes;
 import net.minecraft.Util;
 import net.minecraft.core.Registry;
 import net.minecraft.util.RandomSource;

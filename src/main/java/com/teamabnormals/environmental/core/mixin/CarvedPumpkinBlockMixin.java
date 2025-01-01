@@ -2,7 +2,6 @@ package com.teamabnormals.environmental.core.mixin;
 
 import com.teamabnormals.environmental.common.entity.animal.PineconeGolem;
 import com.teamabnormals.environmental.core.other.tags.EnvironmentalBlockTags;
-import com.teamabnormals.environmental.core.registry.EnvironmentalBlocks;
 import com.teamabnormals.environmental.core.registry.EnvironmentalEntityTypes;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;

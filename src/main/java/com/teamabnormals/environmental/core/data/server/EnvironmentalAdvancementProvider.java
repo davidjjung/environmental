@@ -1,6 +1,5 @@
 package com.teamabnormals.environmental.core.data.server;
 
-import com.teamabnormals.environmental.common.advancement.UpgradeGearTrigger;
 import com.teamabnormals.environmental.common.slabfish.SlabfishType;
 import com.teamabnormals.environmental.core.Environmental;
 import com.teamabnormals.environmental.core.other.EnvironmentalCriteriaTriggers;
@@ -13,7 +12,6 @@ import com.teamabnormals.environmental.core.registry.EnvironmentalRegistries;
 import com.teamabnormals.environmental.core.registry.slabfish.EnvironmentalSlabfishTypes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.FrameType;
-import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.*;
 import net.minecraft.advancements.critereon.TameAnimalTrigger.TriggerInstance;
 import net.minecraft.core.HolderLookup.Provider;

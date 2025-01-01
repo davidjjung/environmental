@@ -33,7 +33,7 @@ public class EnvironmentalSlabfishTypeTagsProvider extends TagsProvider<Slabfish
 		this.tag(EnvironmentalSlabfishTypeTags.RARE).add(
 				DARK_FOREST, FLOWER_FOREST, JUNGLE, BADLANDS, MOUNTAIN, CHERRY_GROVE,
 				BLOSSOM, PINE, MAPLE,
-				RAINFOREST, ASPEN,  LAUREL, DUNES, SCRUBLAND,
+				RAINFOREST, ASPEN, LAUREL, DUNES, SCRUBLAND,
 				WARM_OCEAN, FROZEN_OCEAN,
 				DEEPSLATE, LUSH_CAVES, DRIPSTONE_CAVES, NETHER
 		);

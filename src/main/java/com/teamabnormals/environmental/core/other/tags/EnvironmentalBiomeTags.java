@@ -2,7 +2,6 @@ package com.teamabnormals.environmental.core.other.tags;
 
 import com.teamabnormals.blueprint.core.util.TagUtil;
 import com.teamabnormals.environmental.core.Environmental;
-import com.teamabnormals.environmental.core.EnvironmentalConfig;
 import com.teamabnormals.environmental.core.other.EnvironmentalConstants;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.biome.Biome;
