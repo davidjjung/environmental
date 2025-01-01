@@ -60,8 +60,7 @@ public class EnvironmentalTrades {
 
 		TradeUtil.addRareWandererTrades(event,
 				new BlueprintTrade(5, EnvironmentalItems.SLABFISH_BUCKET.get(), 1, 4, 1),
-				new BlueprintTrade(5, EnvironmentalItems.KOI_BUCKET.get(), 1, 4, 1),
-				new BlueprintTrade(24, EnvironmentalItems.WANDERER_BOOTS.get(), 1, 1, 1)
+				new BlueprintTrade(5, EnvironmentalItems.KOI_BUCKET.get(), 1, 4, 1)
 		);
 	}
 
@@ -70,10 +69,6 @@ public class EnvironmentalTrades {
 		TradeUtil.addVillagerTrades(event, VillagerProfession.FARMER, TradeUtil.APPRENTICE,
 				new BlueprintTrade(1, EnvironmentalItems.CHERRIES.get(), 6, 16, 5),
 				new BlueprintTrade(1, EnvironmentalItems.PLUM.get(), 3, 16, 5)
-		);
-
-		TradeUtil.addVillagerTrades(event, VillagerProfession.MASON, TradeUtil.MASTER,
-				new BlueprintTrade(24, EnvironmentalItems.ARCHITECT_BELT.get(), 1, 1, 5)
 		);
 
 		TradeUtil.addVillagerTrades(event, VillagerProfession.BUTCHER, TradeUtil.NOVICE,

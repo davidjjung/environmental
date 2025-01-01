@@ -6,15 +6,10 @@ import com.teamabnormals.blueprint.core.util.item.CreativeModeTabContentsPopulat
 import com.teamabnormals.blueprint.core.util.registry.BlockSubRegistryHelper;
 import com.teamabnormals.blueprint.core.util.registry.ItemSubRegistryHelper;
 import com.teamabnormals.environmental.common.item.*;
-import com.teamabnormals.environmental.common.item.explorer.ArchitectBeltItem;
-import com.teamabnormals.environmental.common.item.explorer.HealerPouchItem;
-import com.teamabnormals.environmental.common.item.explorer.ThiefHoodItem;
-import com.teamabnormals.environmental.common.item.explorer.WandererBootsItem;
 import com.teamabnormals.environmental.core.Environmental;
 import com.teamabnormals.environmental.core.other.EnvironmentalTiers.EnvironmentalArmorMaterials;
 import com.teamabnormals.environmental.core.other.tags.EnvironmentalBannerPatternTags;
 import com.teamabnormals.environmental.integration.boatload.EnvironmentalBoatTypes;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -34,11 +29,6 @@ import static net.minecraft.world.item.crafting.Ingredient.of;
 @EventBusSubscriber(modid = Environmental.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
 public class EnvironmentalItems {
 	public static final ItemSubRegistryHelper HELPER = Environmental.REGISTRY_HELPER.getItemSubHelper();
-
-	public static final RegistryObject<Item> THIEF_HOOD = HELPER.createItem("thief_hood", () -> new ThiefHoodItem(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> HEALER_POUCH = HELPER.createItem("healer_pouch", () -> new HealerPouchItem(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> ARCHITECT_BELT = HELPER.createItem("architect_belt", () -> new ArchitectBeltItem(new Item.Properties().stacksTo(1)));
-	public static final RegistryObject<Item> WANDERER_BOOTS = HELPER.createItem("wanderer_boots", () -> new WandererBootsItem(new Item.Properties().stacksTo(1)));
 
 	public static final RegistryObject<Item> CHERRIES = HELPER.createItem("cherries", () -> new Item(new Item.Properties().food(EnvironmentalFoods.CHERRIES)));
 	public static final RegistryObject<Item> PLUM = HELPER.createItem("plum", () -> new Item(new Item.Properties().food(EnvironmentalFoods.PLUM)));
@@ -136,7 +126,6 @@ public class EnvironmentalItems {
 				.addItemsBefore(of(Items.STRING), CATTAIL_FLUFF)
 				.tab(COMBAT)
 				.addItemsAfter(of(Items.EGG), MUD_BALL)
-				.addItemsBefore(of(Items.TURTLE_HELMET), THIEF_HOOD, HEALER_POUCH, ARCHITECT_BELT, WANDERER_BOOTS)
 				.addItemsBefore(of(Items.LEATHER_HORSE_ARMOR), YAK_PANTS)
 				.tab(TOOLS_AND_UTILITIES)
 				.addItemsBefore(of(Items.TROPICAL_FISH_BUCKET), KOI_BUCKET)

@@ -54,10 +54,7 @@ public class EnvironmentalItemTagsProvider extends BlueprintItemTagsProvider {
 		this.tag(EnvironmentalItemTags.DEER_FLOWER_ITEMS).add(Items.APPLE).addTag(EnvironmentalItemTags.DEER_STRONG_FLOWER_ITEMS).addTag(EnvironmentalItemTags.DEER_SUPER_FLOWER_ITEMS);
 		this.tag(EnvironmentalItemTags.DEER_STRONG_FLOWER_ITEMS).add(Items.GOLDEN_APPLE);
 		this.tag(EnvironmentalItemTags.DEER_SUPER_FLOWER_ITEMS).add(Items.ENCHANTED_GOLDEN_APPLE);
-		this.tag(Tags.Items.ARMORS_HELMETS).add(THIEF_HOOD.get());
-		this.tag(Tags.Items.ARMORS_CHESTPLATES).add(HEALER_POUCH.get());
-		this.tag(Tags.Items.ARMORS_LEGGINGS).add(ARCHITECT_BELT.get(), YAK_PANTS.get());
-		this.tag(Tags.Items.ARMORS_BOOTS).add(WANDERER_BOOTS.get());
+		this.tag(Tags.Items.ARMORS_LEGGINGS).add(YAK_PANTS.get());
 
 		this.copyWoodsetTags();
 		this.copy(Tags.Blocks.FENCE_GATES_WOODEN, Tags.Items.FENCE_GATES_WOODEN);

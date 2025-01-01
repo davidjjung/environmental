@@ -40,11 +40,6 @@ public class EnvironmentalPlugin implements IModPlugin {
 
 	private static Stream<RepairData> getRepairData() {
 		return Stream.of(
-				new RepairData(EnvironmentalArmorMaterials.EXPLORER.getRepairIngredient(),
-						new ItemStack(EnvironmentalItems.THIEF_HOOD.get()),
-						new ItemStack(EnvironmentalItems.HEALER_POUCH.get()),
-						new ItemStack(EnvironmentalItems.ARCHITECT_BELT.get()),
-						new ItemStack(EnvironmentalItems.WANDERER_BOOTS.get())),
 				new RepairData(EnvironmentalArmorMaterials.YAK.getRepairIngredient(),
 						new ItemStack(EnvironmentalItems.YAK_PANTS.get())
 				)

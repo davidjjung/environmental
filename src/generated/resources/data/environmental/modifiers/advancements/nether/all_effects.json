@@ -5,7 +5,6 @@
       "config": {
         "criteria": "all_effects",
         "effects": {
-          "environmental:panic": {},
           "environmental:serenity": {},
           "minecraft:health_boost": {}
         },
