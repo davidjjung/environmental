@@ -82,6 +82,11 @@ public class PineconeGolem extends AbstractGolem {
 	}
 
 	@Override
+	public double getMyRidingOffset() {
+		return 0.28D;
+	}
+
+	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		ItemStack stack = player.getItemInHand(hand);
 		ItemStack stack1 = this.getMainHandItem();
