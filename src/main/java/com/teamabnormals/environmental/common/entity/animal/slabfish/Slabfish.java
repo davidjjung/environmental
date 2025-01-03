@@ -560,11 +560,6 @@ public class Slabfish extends TamableAnimal implements ContainerListener, Bucket
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
-		return false;
-	}
-
-	@Override
 	public int getMaxSpawnClusterSize() {
 		return 5;
 	}

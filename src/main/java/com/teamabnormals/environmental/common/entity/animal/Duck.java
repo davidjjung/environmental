@@ -172,11 +172,6 @@ public class Duck extends Animal implements EggLayer {
 	}
 
 	@Override
-	public boolean causeFallDamage(float distance, float damageMultiplier, DamageSource source) {
-		return false;
-	}
-
-	@Override
 	protected SoundEvent getAmbientSound() {
 		return EnvironmentalSoundEvents.DUCK_AMBIENT.get();
 	}

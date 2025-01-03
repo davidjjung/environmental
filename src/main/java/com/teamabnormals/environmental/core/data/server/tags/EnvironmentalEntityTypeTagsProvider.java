@@ -24,6 +24,7 @@ public class EnvironmentalEntityTypeTagsProvider extends EntityTypeTagsProvider 
 
 	@Override
 	public void addTags(Provider provider) {
+		this.tag(EntityTypeTags.FALL_DAMAGE_IMMUNE).add(SLABFISH.get(), DUCK.get(), PINECONE_GOLEM.get());
 		this.tag(EntityTypeTags.IMPACT_PROJECTILES).add(MUD_BALL.get(), DUCK_EGG.get());
 		this.tag(EntityTypeTags.POWDER_SNOW_WALKABLE_MOBS).add(REINDEER.get());
 
