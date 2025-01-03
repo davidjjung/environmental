@@ -93,6 +93,7 @@ public class EnvironmentalItems {
 	public static final RegistryObject<ForgeSpawnEggItem> KOI_SPAWN_EGG = HELPER.createSpawnEggItem("koi", EnvironmentalEntityTypes.KOI::get, 5392966, 16754947);
 	public static final RegistryObject<ForgeSpawnEggItem> TAPIR_SPAWN_EGG = HELPER.createSpawnEggItem("tapir", EnvironmentalEntityTypes.TAPIR::get, 0x38373D, 0xC6CACE);
 	public static final RegistryObject<ForgeSpawnEggItem> ZEBRA_SPAWN_EGG = HELPER.createSpawnEggItem("zebra", EnvironmentalEntityTypes.ZEBRA::get, 0xD4CBC6, 0x342E2B);
+	public static final RegistryObject<ForgeSpawnEggItem> PINECONE_GOLEM_SPAWN_EGG = HELPER.createSpawnEggItem("pinecone_golem", EnvironmentalEntityTypes.PINECONE_GOLEM::get, 0x775D49, 0x8FA147);
 	// public static final RegistryObject<ForgeSpawnEggItem> FENNEC_FOX_SPAWN_EGG = HELPER.createSpawnEggItem("fennec_fox", EnvironmentalEntityTypes.FENNEC_FOX::get, 0xFBDB9E, 0xFFFFFF);
 
 	public static final class EnvironmentalFoods {
@@ -142,7 +143,7 @@ public class EnvironmentalItems {
 				.tab(NATURAL_BLOCKS)
 				.addItemsBefore(of(Items.TORCHFLOWER_SEEDS), CATTAIL_FLUFF)
 				.tab(SPAWN_EGGS)
-				.addItemsAlphabetically(is(SpawnEggItem.class), SLABFISH_SPAWN_EGG, DUCK_SPAWN_EGG, DEER_SPAWN_EGG, REINDEER_SPAWN_EGG, YAK_SPAWN_EGG, KOI_SPAWN_EGG, TAPIR_SPAWN_EGG, ZEBRA_SPAWN_EGG);
+				.addItemsAlphabetically(is(SpawnEggItem.class), SLABFISH_SPAWN_EGG, DUCK_SPAWN_EGG, DEER_SPAWN_EGG, REINDEER_SPAWN_EGG, YAK_SPAWN_EGG, KOI_SPAWN_EGG, TAPIR_SPAWN_EGG, ZEBRA_SPAWN_EGG, PINECONE_GOLEM_SPAWN_EGG);
 	}
 
 	public static Predicate<ItemStack> modLoaded(ItemLike item, String... modids) {
