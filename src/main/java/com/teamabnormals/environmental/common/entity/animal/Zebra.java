@@ -35,6 +35,7 @@ import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
+import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -104,7 +105,7 @@ public class Zebra extends AbstractHorse implements NeutralMob {
 	@Override
 	protected void addBehaviourGoals() {
 		this.goalSelector.addGoal(0, new FloatGoal(this));
-		this.goalSelector.addGoal(3, new ZebraTemptGoal(this, 1.25D, Ingredient.of(Items.GOLDEN_CARROT, Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE)));
+		this.goalSelector.addGoal(5, new ZebraTemptGoal(this, 1.25D, Ingredient.of(Items.GOLDEN_CARROT, Items.GOLDEN_APPLE, Items.ENCHANTED_GOLDEN_APPLE)));
 	}
 
 	@Override
@@ -631,6 +632,21 @@ public class Zebra extends AbstractHorse implements NeutralMob {
 		} else {
 			super.handleEntityEvent(id);
 		}
+	}
+
+	@Override
+	public boolean canMate(Animal animal) {
+		if (animal == this) {
+			return false;
+		} else if (!(animal instanceof Zebra)) {
+			return false;
+		} else {
+			return this.canParent() && canParent((AbstractHorse) animal);
+		}
+	}
+
+	protected static boolean canParent(AbstractHorse animal) {
+		return !animal.isVehicle() && !animal.isPassenger() && animal.isTamed() && !animal.isBaby() && animal.getHealth() >= animal.getMaxHealth() && animal.isInLove();
 	}
 
 	@Override
