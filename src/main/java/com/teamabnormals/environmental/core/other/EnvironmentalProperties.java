@@ -4,14 +4,22 @@ import com.teamabnormals.blueprint.core.api.BlockSetTypeRegistryHelper;
 import com.teamabnormals.blueprint.core.api.WoodTypeRegistryHelper;
 import com.teamabnormals.blueprint.core.util.PropertyUtil;
 import com.teamabnormals.blueprint.core.util.PropertyUtil.WoodSetProperties;
+import com.teamabnormals.environmental.common.block.WallHibiscusBlock;
 import com.teamabnormals.environmental.core.Environmental;
+import net.minecraft.core.Direction;
+import net.minecraft.core.Direction.Axis;
+import net.minecraft.util.Mth;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockSetType;
 import net.minecraft.world.level.block.state.properties.WoodType;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Optional;
 
 public class EnvironmentalProperties {
 	public static final BlockSetType WILLOW_BLOCK_SET = blockSetType("willow");
@@ -44,7 +52,7 @@ public class EnvironmentalProperties {
 	public static final BlockBehaviour.Properties DWARF_SPRUCE = BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY);
 
 	public static final BlockBehaviour.Properties DELPHINIUMS = BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
-	public static final BlockBehaviour.Properties WALL_HIBISCUS = Block.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties WALL_HIBISCUS = wallHibiscus();
 
 	public static final BlockBehaviour.Properties PINECONE = Block.Properties.of().mapColor(MapColor.DIRT).strength(1.5F).sound(SoundType.WOOD).ignitedByLava();
 
@@ -70,5 +78,23 @@ public class EnvironmentalProperties {
 
 	public static WoodType woodSetType(BlockSetType type) {
 		return WoodTypeRegistryHelper.registerWoodType(new WoodType(type.name(), type));
+	}
+
+	public static BlockBehaviour.Properties wallHibiscus() {
+		BlockBehaviour.Properties properties = Block.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
+		properties.offsetFunction = Optional.of((state, level, pos) -> {
+			Block block = state.getBlock();
+			long i = Mth.getSeed(pos.getX(), pos.getY(), pos.getZ());
+			float f = block.getMaxHorizontalOffset();
+			double d0 = Mth.clamp(((double)((float)(i & 15L) / 15.0F) - 0.5D) * 0.4D, -f, f);
+			double d1 = Mth.clamp(((double)((float)(i >> 8 & 15L) / 15.0F) - 0.5D) * 0.4D, -f, f);
+
+			Direction facing = state.getValue(WallHibiscusBlock.FACING);
+			Axis axis = facing.getAxis();
+			Vec3 vec3 = state.getValue(WallHibiscusBlock.FACE) != AttachFace.WALL ? new Vec3(d0, 0.0F, d1) : axis == Axis.X ? new Vec3(0.0F, d0, d1) : new Vec3(d0, d1, 0.0F);
+
+			return vec3;
+		});
+		return properties;
 	}
 }
