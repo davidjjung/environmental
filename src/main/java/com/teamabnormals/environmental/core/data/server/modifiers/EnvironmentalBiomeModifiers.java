@@ -39,7 +39,7 @@ import java.util.stream.Stream;
 public class EnvironmentalBiomeModifiers {
 
 	public static void bootstrap(BootstapContext<BiomeModifier> context) {
-		addSpawn(context, "slabfish", EnvironmentalBiomeTags.HAS_SLABFISH, new SpawnerData(EnvironmentalEntityTypes.SLABFISH.get(), 16, 2, 4));
+		addSpawn(context, "slabfish", EnvironmentalBiomeTags.HAS_SLABFISH, new SpawnerData(EnvironmentalEntityTypes.SLABFISH.get(), 12, 4, 4));
 		addSpawn(context, "duck", EnvironmentalBiomeTags.HAS_DUCK, new SpawnerData(EnvironmentalEntityTypes.DUCK.get(), 10, 4, 4));
 		addSpawn(context, "duck_rare", Biomes.RIVER, new SpawnerData(EnvironmentalEntityTypes.DUCK.get(), 1, 1, 2));
 		addSpawnIgnore(context, "deer", EnvironmentalBiomeTags.HAS_DEER, EnvironmentalBiomeTags.WITHOUT_DEER, new SpawnerData(EnvironmentalEntityTypes.DEER.get(), 12, 4, 4));
