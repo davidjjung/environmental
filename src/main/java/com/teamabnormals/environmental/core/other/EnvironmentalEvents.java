@@ -443,7 +443,8 @@ public class EnvironmentalEvents {
 			IDataManager data = ((IDataManager) entity);
 			if (data.getValue(EnvironmentalDataProcessors.IS_MUDDY)) {
 				int mudDryingTime = data.getValue(EnvironmentalDataProcessors.MUD_DRYING_TIME);
-				if (entity.isInWaterRainOrBubble()) {
+				if ((entity.isInWaterOrBubble() && EnvironmentalConfig.COMMON.muddyPigsGetWetInWater.get()) ||
+						((entity.isInWaterOrRain() && !entity.isInWater()) && EnvironmentalConfig.COMMON.muddyPigsGetWetInRain.get())) {
 					data.setValue(EnvironmentalDataProcessors.MUD_DRYING_TIME, mudDryingTime + 1);
 				} else if (mudDryingTime > 0 && EnvironmentalConfig.COMMON.muddyPigsDryOverTime.get() && (!EnvironmentalConfig.COMMON.muddyPigsOnlyDryInTheNether.get() || level.dimensionType().ultraWarm())) {
 					data.setValue(EnvironmentalDataProcessors.MUD_DRYING_TIME, mudDryingTime - 1);

@@ -30,6 +30,8 @@ public class EnvironmentalConfig {
 		public final BooleanValue naturalMuddyPigs;
 		public final DoubleValue muddyPigDecorationChance;
 		public final BooleanValue decoratableMuddyPigs;
+		public final BooleanValue muddyPigsGetWetInWater;
+		public final BooleanValue muddyPigsGetWetInRain;
 		public final BooleanValue muddyPigsDryOverTime;
 		public final BooleanValue muddyPigsOnlyDryInTheNether;
 
@@ -62,6 +64,8 @@ public class EnvironmentalConfig {
 			decoratableMuddyPigs = builder.comment("If Muddy Pigs can be decorated with various flowers, saplings, and plants").define("Decoratable Muddy Pigs", true);
 			muddyPigsDryOverTime = builder.comment("If Muddy Pigs become dry naturally over time").define("Muddy Pigs dry over time", true);
 			muddyPigsOnlyDryInTheNether = builder.comment("If Muddy Pigs only naturally dry when in the Nether").define("Muddy Pigs only dry in the Nether", true);
+			muddyPigsGetWetInWater = builder.comment("If dry Muddy Pigs should become wet again when in water").define("Muddy Pigs get wet in water", false);
+			muddyPigsGetWetInRain = builder.comment("If dry Muddy Pigs should become wet again when in rain").define("Muddy Pigs get wet in rain", false);
 			builder.pop();
 			builder.pop();
 			builder.push("hoglin");
