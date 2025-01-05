@@ -19,6 +19,7 @@ import net.minecraft.world.level.block.state.properties.AttachFace;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -44,7 +45,8 @@ public class WallHibiscusBlock extends AbstractHibiscusBlock {
 
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-		return AABBS.get(getConnectedDirection(state).getOpposite());
+		Vec3 vec3 = state.getOffset(level, pos);
+		return AABBS.get(getConnectedDirection(state).getOpposite()).move(vec3.x, vec3.y, vec3.z);
 	}
 
 	@Override
@@ -94,6 +96,11 @@ public class WallHibiscusBlock extends AbstractHibiscusBlock {
 	@Override
 	public BlockState mirror(BlockState state, Mirror mirror) {
 		return state.rotate(mirror.getRotation(state.getValue(FACING)));
+	}
+
+	@Override
+	public float getMaxHorizontalOffset() {
+		return 0.15F;
 	}
 
 	@Override
