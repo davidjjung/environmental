@@ -171,7 +171,7 @@ public class Koi extends AbstractFish {
 			int verticalRange = EnvironmentalConfig.COMMON.koiVerticalSerenityRange.get();
 			for (Player player : this.level().getEntitiesOfClass(Player.class, this.getBoundingBox().inflate(horizontalRange, verticalRange, horizontalRange))) {
 				if (!this.level().isClientSide())
-					player.addEffect(new MobEffectInstance(EnvironmentalMobEffects.SERENITY.get(), 100, 0, false, false));
+					player.addEffect(new MobEffectInstance(EnvironmentalMobEffects.SERENITY.get(), 100, 0, true, false, true));
 			}
 		}
 		super.aiStep();
