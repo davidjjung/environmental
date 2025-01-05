@@ -17,6 +17,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.FeaturePlaceContext;
 import net.minecraft.world.level.levelgen.feature.configurations.NoneFeatureConfiguration;
+import net.minecraft.world.level.material.FluidState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.List;
@@ -80,44 +81,46 @@ public class HibiscusBushFeature extends Feature<NoneFeatureConfiguration> {
 		maxX += minX;
 		maxZ += minZ;
 
-		placeLeafCube(level, pos, minX, minY, minZ, maxX, maxY, maxZ);
+		placeLeafCube(level, pos, random, minX, minY, minZ, maxX, maxY, maxZ);
 
-		if (random.nextInt(4) > 0) {
+		int sideBushes = 1 + random.nextInt(3);
+
+		for (int i = 0; i < sideBushes; i++) {
 			int offsetX = random.nextBoolean() ? -1 : 1;
-			int offsetY = random.nextBoolean() ? -1 : 1;
+			int offsetZ = random.nextBoolean() ? -1 : 1;
 
-			minX += offsetX;
-			maxX += offsetX;
-			minZ += offsetY;
-			maxZ += offsetY;
-			maxY -= 1;
+			int sideMinX = minX + offsetX;
+			int sideMaxX = maxX + offsetX;
+			int sideMinZ = minZ + offsetZ;
+			int sideMaxZ = maxZ + offsetZ;
+			int sideMaxY = Math.max(maxY - 1 - random.nextInt(2), 0);
 
-			if (random.nextBoolean() && maxX - minX > 1) {
+			if (random.nextBoolean() && sideMaxX - sideMinX > 1) {
 				if (offsetX > 0)
-					minX += 1;
+					sideMinX += 1;
 				else
-					maxX -= 1;
+					sideMaxX -= 1;
 			}
-			if (random.nextBoolean() && maxZ - minZ > 1) {
-				if (offsetY > 0)
-					minZ += 1;
+			if (random.nextBoolean() && sideMaxZ - sideMinZ > 1) {
+				if (offsetZ > 0)
+					sideMinZ += 1;
 				else
-					maxZ -= 1;
+					sideMaxZ -= 1;
 			}
 
-			placeLeafCube(level, pos, minX, minY, minZ, maxX, maxY, maxZ);
+			placeLeafCube(level, pos, random, sideMinX, minY, sideMinZ, sideMaxX, sideMaxY, sideMaxZ);
 		}
 
-		placeWallHibiscuses(level, pos, random);
+		placeBushHibiscuses(level, pos, random);
 	}
 
 	private static void placeGroundHibiscuses(WorldGenLevel level, BlockPos pos, RandomSource random) {
 		BlockPos.MutableBlockPos blockpos = new BlockPos.MutableBlockPos();
-		for (int i = 0; i < 80; ++i) {
+		for (int i = 0; i < 64; ++i) {
 			Optional<Block> block = ForgeRegistries.BLOCKS.tags().getTag(EnvironmentalBlockTags.HIBISCUSES).getRandomElement(random);
 			if (block.isPresent()) {
 				BlockState blockstate = block.get().defaultBlockState();
-				blockpos.setWithOffset(pos, random.nextInt(8) - random.nextInt(8), random.nextInt(4) - random.nextInt(4), random.nextInt(8) - random.nextInt(8));
+				blockpos.setWithOffset(pos, random.nextInt(10) - random.nextInt(10), random.nextInt(4) - random.nextInt(4), random.nextInt(10) - random.nextInt(10));
 
 				if (level.getBlockState(blockpos).isAir() && blockstate.canSurvive(level, blockpos))
 					level.setBlock(blockpos, blockstate, 2);
@@ -125,21 +128,31 @@ public class HibiscusBushFeature extends Feature<NoneFeatureConfiguration> {
 		}
 	}
 
-	private static void placeLeafCube(WorldGenLevel level, BlockPos pos, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
-		for (BlockPos blockpos : BlockPos.betweenClosed(pos.offset(minX, minY, minZ), pos.offset(maxX, maxY, maxZ))) {
-			if (isAirOrPlant(level.getBlockState(blockpos))) {
-				level.setBlock(blockpos, EnvironmentalBlocks.HIBISCUS_LEAVES.get().defaultBlockState(), 19);
+	private static void placeLeafCube(WorldGenLevel level, BlockPos pos, RandomSource random, int minX, int minY, int minZ, int maxX, int maxY, int maxZ) {
+		BlockPos.MutableBlockPos mutablepos = new BlockPos.MutableBlockPos();
+		int cutCorner = random.nextInt(5);
+
+		for (int x = minX; x <= maxX; ++x) {
+			for (int z = minZ; z <= maxZ; ++z) {
+				for (int y = minY; y <= maxY; ++y) {
+					if (minY != maxY && y == maxY && ((x == minX && z == minZ && cutCorner == 1) || (x == maxX && z == minZ && cutCorner == 2) || (x == minX && z == maxZ && cutCorner == 3) || (x == maxX && z == maxZ && cutCorner == 4)))
+						continue;
+
+					mutablepos.setWithOffset(pos, x, y, z);
+					if (isAirOrPlant(level, mutablepos))
+						level.setBlock(mutablepos, EnvironmentalBlocks.HIBISCUS_LEAVES.get().defaultBlockState(), 19);
+				}
 			}
 		}
 	}
 
-	private static void placeWallHibiscuses(WorldGenLevel level, BlockPos pos, RandomSource random) {
+	private static void placeBushHibiscuses(WorldGenLevel level, BlockPos pos, RandomSource random) {
 		BlockPos.MutableBlockPos mutablepos = new BlockPos.MutableBlockPos();
 		for (int x = -3; x <= 3; ++x) {
 			for (int z = -3; z <= 3; ++z) {
 				for (int y = -1; y <= 3; ++y) {
 					mutablepos.setWithOffset(pos, x, y, z);
-					if (random.nextInt(3) > 0 && level.getBlockState(mutablepos).isAir()) {
+					if (random.nextInt(8) > 0 && level.getBlockState(mutablepos).isAir()) {
 						List<Direction> validdirections = Lists.newArrayList();
 						for (Direction direction : Direction.values()) {
 							if (direction != Direction.UP && level.getBlockState(mutablepos.relative(direction)).is(EnvironmentalBlocks.HIBISCUS_LEAVES.get())) {
@@ -165,7 +178,7 @@ public class HibiscusBushFeature extends Feature<NoneFeatureConfiguration> {
 			for (int z = -1; z <= 1; ++z) {
 				for (int y = 1; y >= -1; --y) {
 					mutablepos.setWithOffset(pos, x, y, z);
-					if (!isAirOrPlant(level.getBlockState(mutablepos))) {
+					if (!isAirOrPlant(level, mutablepos)) {
 						return false;
 					} else if (isGrassOrDirt(level, mutablepos.move(Direction.DOWN)) || isNonHibiscusLeaves(level.getBlockState(mutablepos))) {
 						break;
@@ -182,8 +195,9 @@ public class HibiscusBushFeature extends Feature<NoneFeatureConfiguration> {
 		return state.is(BlockTags.LEAVES) && state.getBlock() != EnvironmentalBlocks.HIBISCUS_LEAVES.get();
 	}
 
-	// TODO: Check side effects of turning from Plant material to canBeReplaced
-	private static boolean isAirOrPlant(BlockState state) {
-		return state.isAir() || state.canBeReplaced();
+	private static boolean isAirOrPlant(LevelAccessor level, BlockPos pos) {
+		BlockState blockstate = level.getBlockState(pos);
+		FluidState fluidstate = level.getFluidState(pos);
+		return (blockstate.isAir() || blockstate.canBeReplaced()) && fluidstate.isEmpty();
 	}
 }
