@@ -2,6 +2,7 @@ package com.teamabnormals.environmental.core.other;
 
 import com.google.common.collect.Sets;
 import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
+import com.teamabnormals.blueprint.core.other.tags.BlueprintItemTags;
 import com.teamabnormals.blueprint.core.util.MathUtil;
 import com.teamabnormals.environmental.common.block.GiantLilyPadBlock;
 import com.teamabnormals.environmental.common.block.LargeLilyPadBlock;
@@ -256,9 +257,9 @@ public class EnvironmentalEvents {
 					data.setValue(EnvironmentalDataProcessors.MUD_DRYING_TIME, 0);
 					event.setCancellationResult(InteractionResult.sidedSuccess(level.isClientSide()));
 					event.setCanceled(true);
-				} else if (stack.is(Items.WATER_BUCKET)) {
+				} else if (stack.is(BlueprintItemTags.BUCKETS_WATER)) {
 					level.playSound(null, target, SoundEvents.GENERIC_SPLASH, SoundSource.PLAYERS, 1.0F, 1.0F);
-					player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, new ItemStack(Items.BUCKET)));
+					player.setItemInHand(hand, ItemUtils.createFilledResult(stack, player, stack.getCraftingRemainingItem()));
 					player.awardStat(Stats.ITEM_USED.get(stack.getItem()));
 					if (!level.isClientSide) {
 						ServerLevel serverlevel = (ServerLevel) level;
