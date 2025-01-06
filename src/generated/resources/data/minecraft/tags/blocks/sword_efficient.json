@@ -1,0 +1,22 @@
+{
+  "values": [
+    "environmental:mycelium_sprouts",
+    "environmental:dwarf_spruce",
+    "environmental:hanging_willow_leaves",
+    "environmental:pink_hanging_wisteria_leaves",
+    "environmental:purple_hanging_wisteria_leaves",
+    "environmental:blue_hanging_wisteria_leaves",
+    "environmental:white_hanging_wisteria_leaves",
+    "environmental:giant_tall_grass",
+    "environmental:pink_delphinium",
+    "environmental:purple_delphinium",
+    "environmental:blue_delphinium",
+    "environmental:white_delphinium",
+    "environmental:bird_of_paradise",
+    "environmental:cup_lichen",
+    "environmental:large_lily_pad",
+    "environmental:giant_lily_pad",
+    "environmental:duckweed",
+    "environmental:cactus_bobble"
+  ]
+}

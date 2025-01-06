@@ -14,6 +14,7 @@ public class EnvironmentalBlockTags {
 	public static final TagKey<Block> CATTAIL_PLANTABLE_ON = blockTag("cattail_plantable_on");
 	public static final TagKey<Block> MUD_REPLACEABLES = blockTag("mud_replaceables");
 	public static final TagKey<Block> PINECONE_GOLEM_BASE_BLOCKS = blockTag("pinecone_golem_base_blocks");
+	public static final TagKey<Block> TRACKABLE_BY_TAPIRS = blockTag("trackable_by_tapirs");
 
 	public static final TagKey<Block> HIBISCUSES = blockTag("hibiscuses");
 	public static final TagKey<Block> WALL_HIBISCUSES = blockTag("wall_hibiscuses");

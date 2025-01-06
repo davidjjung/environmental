@@ -4,6 +4,7 @@ import com.teamabnormals.environmental.common.entity.ai.goal.tapir.TapirHuntFlor
 import com.teamabnormals.environmental.common.entity.ai.goal.tapir.TapirPanicGoal;
 import com.teamabnormals.environmental.common.entity.ai.goal.tapir.TapirSniffForFloraGoal;
 import com.teamabnormals.environmental.common.entity.ai.goal.tapir.TapirTemptGoal;
+import com.teamabnormals.environmental.core.other.tags.EnvironmentalBlockTags;
 import com.teamabnormals.environmental.core.registry.EnvironmentalEntityTypes;
 import com.teamabnormals.environmental.core.registry.EnvironmentalParticleTypes;
 import com.teamabnormals.environmental.core.registry.EnvironmentalSoundEvents;
@@ -428,25 +429,10 @@ public class Tapir extends Animal {
 		}
 	}
 
-	// TODO: Tapir food...
 	@Override
 	public boolean isFood(ItemStack stack) {
 		if (stack.getItem() instanceof BlockItem blockItem) {
-			BlockState state = blockItem.getBlock().defaultBlockState();
-			return true;
-//			Material material = state.getMaterial();
-//			return (material == Material.PLANT
-//					|| material == Material.WATER_PLANT
-//					|| material == Material.REPLACEABLE_PLANT
-//					|| material == Material.REPLACEABLE_FIREPROOF_PLANT
-//					|| material == Material.REPLACEABLE_WATER_PLANT
-//					|| material == Material.BAMBOO_SAPLING
-//					|| material == Material.BAMBOO
-//					|| material == Material.LEAVES
-//					|| material == Material.CACTUS
-//					|| material == Material.MOSS
-//					|| material == Material.VEGETABLE
-//			);
+			return blockItem.getBlock().defaultBlockState().is(EnvironmentalBlockTags.TRACKABLE_BY_TAPIRS);
 		}
 
 		return false;
