@@ -215,7 +215,7 @@ public class EnvironmentalEvents {
 			}
 		}
 
-		if (target instanceof Pig pig && target.isAlive() && !pig.isLeashed()) {
+		if (target instanceof Pig pig && target.isAlive()) {
 			IDataManager data = ((IDataManager) target);
 			if (EnvironmentalConfig.COMMON.muddyPigs.get() && data.getValue(EnvironmentalDataProcessors.IS_MUDDY)) {
 				ResourceLocation decoration = data.getValue(EnvironmentalDataProcessors.MUDDY_PIG_DECORATION);
@@ -284,7 +284,7 @@ public class EnvironmentalEvents {
 				}
 			}
 
-			if (stack.is(EnvironmentalItemTags.PIG_TRUFFLE_ITEMS) && !pig.isBaby() && EnvironmentalConfig.COMMON.pigsHuntTruffles.get()) {
+			if (!pig.isLeashed() && stack.is(EnvironmentalItemTags.PIG_TRUFFLE_ITEMS) && !pig.isBaby() && EnvironmentalConfig.COMMON.pigsHuntTruffles.get()) {
 				if (data.getValue(EnvironmentalDataProcessors.TRUFFLE_HUNTING_TIME) == 0) {
 					if (level.dimensionType().natural()) {
 						data.setValue(EnvironmentalDataProcessors.TRUFFLE_HUNTING_TIME, 4800);
