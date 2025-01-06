@@ -2,10 +2,8 @@ package com.teamabnormals.environmental.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
+import com.teamabnormals.environmental.common.entity.animal.MuddyPig;
 import com.teamabnormals.environmental.core.Environmental;
-import com.teamabnormals.environmental.core.EnvironmentalConfig;
-import com.teamabnormals.environmental.core.other.EnvironmentalDataProcessors;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -28,9 +26,8 @@ public class MuddyPigMudLayer<E extends Pig, M extends EntityModel<E>> extends R
 
 	@Override
 	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLightIn, E pig, float limbSwing, float limbSwingAmount, float partialTicks, float ageInTicks, float netHeadYaw, float headPitch) {
-		IDataManager dataManager = (IDataManager) pig;
-		if (EnvironmentalConfig.COMMON.muddyPigs.get() && dataManager.getValue(EnvironmentalDataProcessors.IS_MUDDY)) {
-			VertexConsumer builder = buffer.getBuffer(RenderType.entityTranslucent(dataManager.getValue(EnvironmentalDataProcessors.MUD_DRYING_TIME) <= 0 ? DRIED_MUDDY_PIG_LOCATION : MUDDY_PIG_LOCATION));
+		if (MuddyPig.enabled() && MuddyPig.isMuddy(pig)) {
+			VertexConsumer builder = buffer.getBuffer(RenderType.entityTranslucent(MuddyPig.isDry(pig) ? DRIED_MUDDY_PIG_LOCATION : MUDDY_PIG_LOCATION));
 			this.getParentModel().setupAnim(pig, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 			this.getParentModel().renderToBuffer(poseStack, builder, packedLightIn, LivingEntityRenderer.getOverlayCoords(pig, 0.0F), 1.0F, 1.0F, 1.0F, 1.0F);
 		}

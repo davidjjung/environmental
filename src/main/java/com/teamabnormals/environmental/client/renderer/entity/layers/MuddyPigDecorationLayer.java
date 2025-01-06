@@ -1,9 +1,7 @@
 package com.teamabnormals.environmental.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
-import com.teamabnormals.environmental.core.EnvironmentalConfig;
-import com.teamabnormals.environmental.core.other.EnvironmentalDataProcessors;
+import com.teamabnormals.environmental.common.entity.animal.MuddyPig;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PigModel;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -14,12 +12,14 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.resources.model.BakedModel;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.animal.Pig;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.Optional;
 
 @OnlyIn(Dist.CLIENT)
 public class MuddyPigDecorationLayer<T extends Pig> extends RenderLayer<T, PigModel<T>> {
@@ -33,10 +33,9 @@ public class MuddyPigDecorationLayer<T extends Pig> extends RenderLayer<T, PigMo
 	public void render(PoseStack poseStack, MultiBufferSource bufferSource, int p_117258_, T pig, float p_117260_, float p_117261_, float p_117262_, float p_117263_, float p_117264_, float p_117265_) {
 		Minecraft minecraft = Minecraft.getInstance();
 		boolean flag = minecraft.shouldEntityAppearGlowing(pig) && pig.isInvisible();
-		IDataManager dataManager = (IDataManager) pig;
-		ResourceLocation flower = dataManager.getValue(EnvironmentalDataProcessors.MUDDY_PIG_DECORATION);
-		if (EnvironmentalConfig.COMMON.muddyPigs.get() && !flower.equals(new ResourceLocation("empty")) && ForgeRegistries.BLOCKS.getValue(flower) != null && (!pig.isInvisible() || flag)) {
-			BlockState state = ForgeRegistries.BLOCKS.getValue(flower).defaultBlockState();
+		Optional<Item> decoration = MuddyPig.getDecoration(pig);
+		if (MuddyPig.enabled() && decoration.isPresent() && (!pig.isInvisible() || flag)) {
+			BlockState state = ((BlockItem) decoration.get()).getBlock().defaultBlockState();
 			int i = LivingEntityRenderer.getOverlayCoords(pig, 0.0F);
 			BakedModel bakedmodel = this.blockRenderer.getBlockModel(state);
 			poseStack.pushPose();

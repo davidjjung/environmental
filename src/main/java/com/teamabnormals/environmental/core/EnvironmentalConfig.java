@@ -63,9 +63,9 @@ public class EnvironmentalConfig {
 			muddyPigDecorationChance = builder.comment("The chance that a Muddy Pig has to spawn with a decoration, such as a flower").defineInRange("Muddy Pig decoration chance", 0.2D, 0.0D, 1.0D);
 			decoratableMuddyPigs = builder.comment("If Muddy Pigs can be decorated with various flowers, saplings, and plants").define("Decoratable Muddy Pigs", true);
 			muddyPigsDryOverTime = builder.comment("If Muddy Pigs become dry naturally over time").define("Muddy Pigs dry over time", true);
-			muddyPigsOnlyDryInTheNether = builder.comment("If Muddy Pigs only naturally dry when in the Nether").define("Muddy Pigs only dry in the Nether", true);
-			muddyPigsGetWetInWater = builder.comment("If dry Muddy Pigs should become wet again when in water").define("Muddy Pigs get wet in water", false);
-			muddyPigsGetWetInRain = builder.comment("If dry Muddy Pigs should become wet again when in rain").define("Muddy Pigs get wet in rain", false);
+			muddyPigsOnlyDryInTheNether = builder.comment("If Muddy Pigs only naturally dry when in the Nether").define("Muddy Pigs only dry in the Nether", false);
+			muddyPigsGetWetInWater = builder.comment("If dry Muddy Pigs should become wet again when in water").define("Muddy Pigs get wet in water", true);
+			muddyPigsGetWetInRain = builder.comment("If dry Muddy Pigs should become wet again when in rain").define("Muddy Pigs get wet in rain", true);
 			builder.pop();
 			builder.pop();
 			builder.push("hoglin");

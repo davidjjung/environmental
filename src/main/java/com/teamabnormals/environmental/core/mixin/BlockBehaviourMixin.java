@@ -1,9 +1,7 @@
 package com.teamabnormals.environmental.core.mixin;
 
-import com.teamabnormals.blueprint.common.world.storage.tracking.IDataManager;
+import com.teamabnormals.environmental.common.entity.animal.MuddyPig;
 import com.teamabnormals.environmental.common.entity.animal.Tapir;
-import com.teamabnormals.environmental.core.EnvironmentalConfig;
-import com.teamabnormals.environmental.core.other.EnvironmentalDataProcessors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.animal.Pig;
@@ -31,10 +29,9 @@ public class BlockBehaviourMixin {
 	public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity, CallbackInfo ci) {
 		BlockBehaviour block = (BlockBehaviour) (Object) this;
 
-		if (block instanceof MudBlock && entity instanceof Pig pig && EnvironmentalConfig.COMMON.muddyPigs.get()) {
-			IDataManager dataManager = (IDataManager) pig;
-			dataManager.setValue(EnvironmentalDataProcessors.IS_MUDDY, true);
-			dataManager.setValue(EnvironmentalDataProcessors.MUD_DRYING_TIME, dataManager.getValue(EnvironmentalDataProcessors.MUD_DRYING_TIME) + 300);
+		if (block instanceof MudBlock && entity instanceof Pig pig && MuddyPig.enabled()) {
+			MuddyPig.setMuddy(pig, true);
+			MuddyPig.updateDryingTime(pig, 20);
 		}
 
 		if (block instanceof LeavesBlock && entity instanceof Tapir) {
