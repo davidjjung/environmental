@@ -21,6 +21,8 @@ import com.teamabnormals.environmental.core.data.server.modifiers.EnvironmentalL
 import com.teamabnormals.environmental.core.data.server.tags.*;
 import com.teamabnormals.environmental.core.other.*;
 import com.teamabnormals.environmental.core.registry.*;
+import com.teamabnormals.gallery.core.data.client.GalleryAssetsRemolderProvider;
+import com.teamabnormals.gallery.core.data.client.GalleryItemModelProvider;
 import net.minecraft.client.model.geom.builders.CubeDeformation;
 import net.minecraft.client.model.geom.builders.LayerDefinition;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
@@ -147,6 +149,9 @@ public class Environmental {
 		generator.addProvider(client, new EnvironmentalItemModelProvider(output, helper));
 		generator.addProvider(client, new EnvironmentalBlockStateProvider(output, helper));
 		generator.addProvider(client, new EnvironmentalSpriteSourceProvider(output, helper));
+
+		generator.addProvider(client, new GalleryItemModelProvider(MOD_ID, output, helper));
+		generator.addProvider(client, new GalleryAssetsRemolderProvider(MOD_ID, output, provider));
 	}
 
 	private void setupPlayMessages() {

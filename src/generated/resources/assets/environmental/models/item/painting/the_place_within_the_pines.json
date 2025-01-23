@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "environmental:item/painting/the_place_within_the_pines"
+  }
+}
