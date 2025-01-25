@@ -84,6 +84,7 @@ public abstract class AbstractDeer extends Animal {
 
 	public AbstractDeer(EntityType<? extends Animal> type, Level level) {
 		super(type, level);
+		this.setMaxUpStep(1.0F);
 		this.neckAngle = 15F;
 		this.neckAngleO = 15F;
 		this.floweringTime = 0;
