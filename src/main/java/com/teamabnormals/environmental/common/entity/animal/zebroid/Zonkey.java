@@ -395,11 +395,6 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 	}
 
 	@Override
-	public double getPassengersRidingOffset() {
-		return super.getPassengersRidingOffset() - 0.25D;
-	}
-
-	@Override
 	public SpawnGroupData finalizeSpawn(ServerLevelAccessor level, DifficultyInstance difficulty, MobSpawnType spawnType, @Nullable SpawnGroupData groupData, @Nullable CompoundTag tag) {
 		this.randomizeStripeOpacity(level.getRandom());
 		return super.finalizeSpawn(level, difficulty, spawnType, groupData, tag);

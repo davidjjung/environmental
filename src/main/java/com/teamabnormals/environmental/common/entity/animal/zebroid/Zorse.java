@@ -215,4 +215,9 @@ public class Zorse extends AbstractUnchestedZebroid implements VariantHolder<Var
 		super.setOffspringAttributes(otherParent, child);
 		this.setOffspringAttribute(otherParent, child, Attributes.ATTACK_DAMAGE, MIN_DAMAGE, MAX_DAMAGE);
 	}
+
+	@Override
+	public double getPassengersRidingOffset() {
+		return super.getPassengersRidingOffset() - 0.1D;
+	}
 }

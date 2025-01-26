@@ -1,7 +1,6 @@
 package com.teamabnormals.environmental.client.renderer.entity;
 
 import com.google.common.collect.Maps;
-import com.mojang.blaze3d.vertex.PoseStack;
 import com.teamabnormals.environmental.client.model.ZorseModel;
 import com.teamabnormals.environmental.client.renderer.entity.layers.ZorseArmorLayer;
 import com.teamabnormals.environmental.client.renderer.entity.layers.ZorseMarkingsLayer;
@@ -32,12 +31,6 @@ public class ZorseRenderer extends MobRenderer<Zorse, ZorseModel<Zorse>> {
 		this.addLayer(new ZorseStripesRenderLayer(this));
 		this.addLayer(new ZorseMarkingsLayer(this));
 		this.addLayer(new ZorseArmorLayer(this, context.getModelSet()));
-	}
-
-	@Override
-	protected void scale(Zorse zorse, PoseStack poseStack, float partialTick) {
-		poseStack.scale(1.1F, 1.1F, 1.1F);
-		super.scale(zorse, poseStack, partialTick);
 	}
 
 	@Override
