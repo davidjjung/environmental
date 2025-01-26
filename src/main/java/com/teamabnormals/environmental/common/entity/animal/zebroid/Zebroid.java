@@ -7,7 +7,6 @@ import com.teamabnormals.environmental.core.other.tags.EnvironmentalEntityTypeTa
 import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -18,7 +17,6 @@ import net.minecraft.world.entity.ai.attributes.AttributeModifier.Operation;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -313,18 +311,6 @@ public interface Zebroid {
 		AbstractHorse horse = (AbstractHorse) this;
 
 		return !this.isKicking() && horse.getMoveControl().getSpeedModifier() <= 1.0D;
-	}
-
-	default InteractionResult handleFedFood(Player player, ItemStack stack) {
-		AbstractHorse horse = (AbstractHorse) this;
-
-		if (!horse.isTamed() && !horse.isBaby()) {
-			horse.makeMad();
-			horse.setTarget(player);
-			return InteractionResult.sidedSuccess(horse.level().isClientSide);
-		}
-
-		return InteractionResult.PASS;
 	}
 
 	default void handleStepSound(BlockPos pos, BlockState state) {

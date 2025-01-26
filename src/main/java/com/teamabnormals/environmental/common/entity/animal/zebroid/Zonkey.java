@@ -26,7 +26,6 @@ import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
 import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
@@ -264,12 +263,6 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 		boolean flag = this.isJumping();
 		super.travel(motion);
 		this.handleTravel(flag);
-	}
-
-	@Override
-	public InteractionResult fedFood(Player player, ItemStack stack) {
-		InteractionResult result = this.handleFedFood(player, stack);
-		return result == InteractionResult.PASS ? super.fedFood(player, stack) : result;
 	}
 
 	@Override

@@ -235,12 +235,6 @@ public abstract class AbstractUnchestedZebroid extends AbstractHorse implements 
 	}
 
 	@Override
-	public InteractionResult fedFood(Player player, ItemStack stack) {
-		InteractionResult result = this.handleFedFood(player, stack);
-		return result == InteractionResult.PASS ? super.fedFood(player, stack) : result;
-	}
-
-	@Override
 	public void setLeashedTo(Entity entity, boolean broadcast) {
 		super.setLeashedTo(entity, broadcast);
 		this.handleLeashed(entity);
