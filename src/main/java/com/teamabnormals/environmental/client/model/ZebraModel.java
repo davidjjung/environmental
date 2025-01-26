@@ -12,6 +12,7 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
+// TODO: Fix hybrid models having slightly misaligned legs
 public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListModel<T> {
 	protected boolean isHybrid = false;
 
@@ -125,7 +126,7 @@ public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListMo
 		}
 
 		if (limbSwingAmount > 0.2F) {
-			headswing += Mth.cos(limbSwing * 0.4F) * 0.15F * limbSwingAmount;
+			headswing += Mth.cos(limbSwing * 0.8F) * 0.15F * limbSwingAmount;
 		}
 
 		float eatanim = zebra.getEatAnim(partialTick);
