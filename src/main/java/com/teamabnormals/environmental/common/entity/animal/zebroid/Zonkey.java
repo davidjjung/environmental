@@ -229,8 +229,15 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		boolean flag = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
-		if (!this.isVehicle() && !flag && !player.getItemInHand(hand).isEmpty() && !this.isTamed() && this.isAngryAt(player))
-			return InteractionResult.CONSUME;
+		if (!this.isVehicle() && !flag && !player.getItemInHand(hand).isEmpty() && !this.isTamed()) {
+			if (this.isAngryAt(player)) {
+				return InteractionResult.CONSUME;
+			} else {
+				this.makeMad();
+				this.setTarget(player);
+				return InteractionResult.sidedSuccess(this.level().isClientSide);
+			}
+		}
 
 		return super.mobInteract(player, hand);
 	}

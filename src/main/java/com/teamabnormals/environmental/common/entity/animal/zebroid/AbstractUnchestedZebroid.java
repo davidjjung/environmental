@@ -209,21 +209,20 @@ public abstract class AbstractUnchestedZebroid extends AbstractHorse implements 
 	@Override
 	public InteractionResult mobInteract(Player player, InteractionHand hand) {
 		boolean flag = !this.isBaby() && this.isTamed() && player.isSecondaryUseActive();
-		if (!this.isVehicle() && !flag && !player.getItemInHand(hand).isEmpty() && !this.isTamed() && this.isAngryAt(player))
-			return InteractionResult.CONSUME;
+		if (!this.isVehicle() && !flag && !player.getItemInHand(hand).isEmpty() && !this.isTamed()) {
+			if (this.isAngryAt(player)) {
+				return InteractionResult.CONSUME;
+			} else {
+				this.makeMad();
+				this.setTarget(player);
+				return InteractionResult.sidedSuccess(this.level().isClientSide);
+			}
+		}
 
 		if (!this.isVehicle() && !flag) {
 			ItemStack itemstack = player.getItemInHand(hand);
-			if (!itemstack.isEmpty()) {
-				if (this.isFood(itemstack)) {
-					return this.fedFood(player, itemstack);
-				}
-
-				if (!this.isTamed()) {
-					this.makeMad();
-					this.setTarget(player);
-					return InteractionResult.sidedSuccess(this.level().isClientSide);
-				}
+			if (!itemstack.isEmpty() && this.isFood(itemstack)) {
+				return this.fedFood(player, itemstack);
 			}
 		}
 		return super.mobInteract(player, hand);

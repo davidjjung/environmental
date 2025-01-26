@@ -12,7 +12,6 @@ import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
-// TODO: Fix hybrid models having slightly misaligned legs
 public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListModel<T> {
 	protected boolean isHybrid = false;
 
@@ -108,7 +107,6 @@ public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListMo
 		return ImmutableList.of(this.body, this.rightHindLeg, this.leftHindLeg, this.rightFrontLeg, this.leftFrontLeg, this.rightHindBabyLeg, this.leftHindBabyLeg, this.rightFrontBabyLeg, this.leftFrontBabyLeg);
 	}
 
-	// TODO: Kicking animations might need tweaking for hybrids
 	@Override
 	public void prepareMobModel(T zebra, float limbSwing, float limbSwingAmount, float partialTick) {
 		super.prepareMobModel(zebra, limbSwing, limbSwingAmount, partialTick);
@@ -182,7 +180,7 @@ public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListMo
 		frontkicklegrot *= nostandanim;
 
 		this.body.y = 11.0F;
-		this.body.z = 5.5F;
+		this.body.z = this.isHybrid ? 5.0F : 5.5F;
 		this.leftHindLeg.y = 14.0F;
 		this.leftHindLeg.z = 7.0F;
 

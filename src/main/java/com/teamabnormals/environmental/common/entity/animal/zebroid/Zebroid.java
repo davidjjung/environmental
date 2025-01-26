@@ -332,7 +332,6 @@ public interface Zebroid {
 		}
 	}
 
-	// TODO: Possibly fix this for hybrids
 	default void handlePositionRider(Entity rider, Entity.MoveFunction function) {
 		AbstractHorse horse = (AbstractHorse) this;
 
