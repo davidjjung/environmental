@@ -1,6 +1,6 @@
 package com.teamabnormals.environmental.common.network.message;
 
-import com.teamabnormals.environmental.common.entity.animal.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebroid;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Player;
 import net.minecraftforge.fml.LogicalSide;
@@ -30,7 +30,7 @@ public final class C2SZebraJumpMessage {
 			context.enqueueWork(() -> {
 				Player player = context.getSender();
 				if (player != null) {
-					if (player.getVehicle() instanceof Zebra zebra) {
+					if (player.getVehicle() instanceof Zebroid zebra) {
 						zebra.setJumpStrength(message.strength);
 					}
 				}

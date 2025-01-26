@@ -32,7 +32,7 @@ public class EnvironmentalEntityTypeTagsProvider extends EntityTypeTagsProvider 
 		this.tag(EnvironmentalEntityTypeTags.DEER).add(EnvironmentalEntityTypes.DEER.get(), REINDEER.get());
 		this.tag(SCARES_DEER).add(EntityType.PLAYER, EntityType.VILLAGER, EntityType.WANDERING_TRADER).addTag(SCARES_TRUSTING_DEER);
 		this.tag(SCARES_TRUSTING_DEER).add(EntityType.WOLF).addTag(EntityTypeTags.RAIDERS);
-		this.tag(ZEBRAS_DONT_KICK).add(ZEBRA.get());
+		this.tag(ZEBROIDS_DONT_KICK).add(ZEBRA.get(), ZORSE.get(), ZONKEY.get(), EntityType.HORSE, EntityType.DONKEY, EntityType.MULE, EntityType.ZOMBIE_HORSE, EntityType.SKELETON_HORSE);
 
 		this.tag(BlueprintEntityTypeTags.MILKABLE).add(YAK.get());
 		this.tag(BlueprintEntityTypeTags.FISHES).add(KOI.get());

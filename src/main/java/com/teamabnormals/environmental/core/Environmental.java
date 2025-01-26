@@ -174,6 +174,8 @@ public class Environmental {
 		event.registerLayerDefinition(EnvironmentalModelLayers.YAK, YakModel::createBodyLayer);
 		event.registerLayerDefinition(EnvironmentalModelLayers.TAPIR, TapirModel::createBodyLayer);
 		event.registerLayerDefinition(EnvironmentalModelLayers.ZEBRA, () -> LayerDefinition.create(ZebraModel.createBodyMesh(CubeDeformation.NONE), 64, 64));
+		event.registerLayerDefinition(EnvironmentalModelLayers.ZORSE, () -> LayerDefinition.create(ZorseModel.createBodyMesh(CubeDeformation.NONE), 64, 64));
+		event.registerLayerDefinition(EnvironmentalModelLayers.ZONKEY, () -> LayerDefinition.create(ZonkeyModel.createBodyMesh(CubeDeformation.NONE), 64, 64));
 		event.registerLayerDefinition(EnvironmentalModelLayers.PINECONE_GOLEM, PineconeGolemModel::createBodyLayer);
 
 		event.registerLayerDefinition(EnvironmentalModelLayers.THIEF_HOOD, ThiefHoodModel::createBodyLayer);
@@ -193,6 +195,8 @@ public class Environmental {
 		// event.registerEntityRenderer(EnvironmentalEntityTypes.FENNEC_FOX.get(), FennecFoxRenderer::new);
 		event.registerEntityRenderer(EnvironmentalEntityTypes.TAPIR.get(), TapirRenderer::new);
 		event.registerEntityRenderer(EnvironmentalEntityTypes.ZEBRA.get(), ZebraRenderer::new);
+		event.registerEntityRenderer(EnvironmentalEntityTypes.ZORSE.get(), ZorseRenderer::new);
+		event.registerEntityRenderer(EnvironmentalEntityTypes.ZONKEY.get(), ZonkeyRenderer::new);
 		event.registerEntityRenderer(EnvironmentalEntityTypes.PINECONE_GOLEM.get(), PineconeGolemRenderer::new);
 
 		event.registerEntityRenderer(EnvironmentalEntityTypes.DUCK_EGG.get(), ThrownItemRenderer::new);

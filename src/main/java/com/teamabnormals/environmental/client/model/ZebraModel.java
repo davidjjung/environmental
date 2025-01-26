@@ -1,7 +1,7 @@
 package com.teamabnormals.environmental.client.model;
 
 import com.google.common.collect.ImmutableList;
-import com.teamabnormals.environmental.common.entity.animal.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebroid;
 import net.minecraft.client.model.AgeableListModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.model.geom.PartPose;
@@ -10,8 +10,11 @@ import net.minecraft.client.model.geom.builders.CubeListBuilder;
 import net.minecraft.client.model.geom.builders.MeshDefinition;
 import net.minecraft.client.model.geom.builders.PartDefinition;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 
-public class ZebraModel<T extends Zebra> extends AgeableListModel<T> {
+public class ZebraModel<T extends AbstractHorse & Zebroid> extends AgeableListModel<T> {
+	protected boolean isHybrid = false;
+
 	protected final ModelPart body;
 	protected final ModelPart headParts;
 	private final ModelPart rightHindLeg;
@@ -104,11 +107,12 @@ public class ZebraModel<T extends Zebra> extends AgeableListModel<T> {
 		return ImmutableList.of(this.body, this.rightHindLeg, this.leftHindLeg, this.rightFrontLeg, this.leftFrontLeg, this.rightHindBabyLeg, this.leftHindBabyLeg, this.rightFrontBabyLeg, this.leftFrontBabyLeg);
 	}
 
+	// TODO: Kicking animations might need tweaking for hybrids
 	@Override
 	public void prepareMobModel(T zebra, float limbSwing, float limbSwingAmount, float partialTick) {
 		super.prepareMobModel(zebra, limbSwing, limbSwingAmount, partialTick);
-		float bodyrot = Mth.rotLerp(zebra.yBodyRotO, zebra.yBodyRot, partialTick);
-		float headrot = Mth.rotLerp(zebra.yHeadRotO, zebra.yHeadRot, partialTick);
+		float bodyrot = Mth.rotLerp(partialTick, zebra.yBodyRotO, zebra.yBodyRot);
+		float headrot = Mth.rotLerp(partialTick, zebra.yHeadRotO, zebra.yHeadRot);
 		float headyangle = headrot - bodyrot;
 		float headswing = Mth.lerp(partialTick, zebra.xRotO, zebra.getXRot()) * Mth.DEG_TO_RAD;
 
@@ -131,8 +135,8 @@ public class ZebraModel<T extends Zebra> extends AgeableListModel<T> {
 		boolean movingtail = zebra.tailCounter != 0;
 		float ageinticks = (float) zebra.tickCount + partialTick;
 
-		this.headParts.y = 6.0F;
-		this.headParts.z = -10.5F;
+		this.headParts.y = this.isHybrid ? 4.0F : 6.0F;
+		this.headParts.z = this.isHybrid ? -12.0F : -10.5F;
 		this.body.xRot = 0.0F;
 		this.headParts.xRot = (Mth.PI / 6F) + headswing;
 		this.headParts.yRot = headyangle * Mth.DEG_TO_RAD;
@@ -162,8 +166,8 @@ public class ZebraModel<T extends Zebra> extends AgeableListModel<T> {
 		this.leftFrontLeg.xRot = leftfrontlegangle;
 		this.rightFrontLeg.xRot = rightfrontlegangle;
 		this.tail.xRot = (Mth.PI / 6F) + limbSwingAmount * 0.75F;
-		this.tail.y = -2.5F + limbSwingAmount;
-		this.tail.z = 1.0F + limbSwingAmount * 2.0F;
+		this.tail.y = (this.isHybrid ? -5.0F : -2.5F) + limbSwingAmount;
+		this.tail.z = (this.isHybrid ? 2.0F : 1.0F) + limbSwingAmount * 2.0F;
 
 		// Zebra animations
 		float backkickbodyrot = zebra.getBackKickBodyRot(partialTick);

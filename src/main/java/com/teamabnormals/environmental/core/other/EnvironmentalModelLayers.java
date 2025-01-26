@@ -14,6 +14,8 @@ public class EnvironmentalModelLayers {
 	public static final ModelLayerLocation TAPIR = register("tapir");
 	public static final ModelLayerLocation YAK = register("yak");
 	public static final ModelLayerLocation ZEBRA = register("zebra");
+	public static final ModelLayerLocation ZORSE = register("zorse");
+	public static final ModelLayerLocation ZONKEY = register("zonkey");
 	public static final ModelLayerLocation PINECONE_GOLEM = register("pinecone_golem");
 
 	public static final ModelLayerLocation THIEF_HOOD = register("thief_hood", "armor");

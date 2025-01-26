@@ -1,6 +1,6 @@
-package com.teamabnormals.environmental.common.entity.ai.goal.zebra;
+package com.teamabnormals.environmental.common.entity.ai.goal.zebroid;
 
-import com.teamabnormals.environmental.common.entity.animal.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebra;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.Goal;

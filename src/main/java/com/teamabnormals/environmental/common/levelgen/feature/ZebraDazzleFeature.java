@@ -3,7 +3,7 @@ package com.teamabnormals.environmental.common.levelgen.feature;
 import com.google.common.collect.Lists;
 import com.mojang.datafixers.util.Pair;
 import com.mojang.serialization.Codec;
-import com.teamabnormals.environmental.common.entity.animal.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebra;
 import com.teamabnormals.environmental.core.registry.EnvironmentalEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;

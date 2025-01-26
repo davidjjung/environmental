@@ -83,6 +83,8 @@ dependencies {
     implementation fg.deobf("com.teamabnormals:woodworks:${project.minecraft}-${project.woodworks}")
     implementation fg.deobf("com.teamabnormals:gallery:${project.minecraft}-${project.gallery}")
 
+    compileOnly fg.deobf("curse.maven:quark-243121:${project.quark}")
+    compileOnly fg.deobf("curse.maven:zeta-968868:${project.zeta}")
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-common-api:${project.jei}")
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge-api:${project.jei}")
     runtimeOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge:${project.jei}")

@@ -1,12 +1,18 @@
 package com.teamabnormals.environmental.core.registry;
 
 import com.teamabnormals.blueprint.core.util.registry.EntitySubRegistryHelper;
-import com.teamabnormals.environmental.common.entity.animal.*;
+import com.teamabnormals.environmental.common.entity.animal.Duck;
+import com.teamabnormals.environmental.common.entity.animal.PineconeGolem;
+import com.teamabnormals.environmental.common.entity.animal.Tapir;
+import com.teamabnormals.environmental.common.entity.animal.Yak;
 import com.teamabnormals.environmental.common.entity.animal.deer.AbstractDeer;
 import com.teamabnormals.environmental.common.entity.animal.deer.Deer;
 import com.teamabnormals.environmental.common.entity.animal.deer.Reindeer;
 import com.teamabnormals.environmental.common.entity.animal.koi.Koi;
 import com.teamabnormals.environmental.common.entity.animal.slabfish.Slabfish;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zonkey;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zorse;
 import com.teamabnormals.environmental.common.entity.projectile.ThrownDuckEgg;
 import com.teamabnormals.environmental.common.entity.projectile.ThrownMudBall;
 import com.teamabnormals.environmental.core.Environmental;
@@ -35,6 +41,8 @@ public class EnvironmentalEntityTypes {
 	// public static final RegistryObject<EntityType<FennecFox>> FENNEC_FOX = HELPER.createLivingEntity("fennec_fox", FennecFox::new, MobCategory.CREATURE, 0.75F, 0.5F);
 	public static final RegistryObject<EntityType<Tapir>> TAPIR = HELPER.createLivingEntity("tapir", Tapir::new, MobCategory.CREATURE, 0.9F, 0.98F);
 	public static final RegistryObject<EntityType<Zebra>> ZEBRA = HELPER.createLivingEntity("zebra", Zebra::new, MobCategory.CREATURE, 1.3964844F, 1.5F);
+	public static final RegistryObject<EntityType<Zorse>> ZORSE = HELPER.createLivingEntity("zorse", Zorse::new, MobCategory.CREATURE, 1.3964844F, 1.6F);
+	public static final RegistryObject<EntityType<Zonkey>> ZONKEY = HELPER.createLivingEntity("zonkey", Zonkey::new, MobCategory.CREATURE, 1.3964844F, 1.5F);
 	public static final RegistryObject<EntityType<PineconeGolem>> PINECONE_GOLEM = HELPER.createLivingEntity("pinecone_golem", PineconeGolem::new, MobCategory.MISC, 0.65F, 0.65F);
 
 	public static final RegistryObject<EntityType<ThrownDuckEgg>> DUCK_EGG = HELPER.createEntity("duck_egg", ThrownDuckEgg::new, ThrownDuckEgg::new, MobCategory.MISC, 0.25F, 0.25F);
@@ -64,6 +72,8 @@ public class EnvironmentalEntityTypes {
 		// event.put(FENNEC_FOX.get(), Fox.createAttributes().build());
 		event.put(TAPIR.get(), Tapir.createAttributes().build());
 		event.put(ZEBRA.get(), Zebra.createAttributes().build());
+		event.put(ZORSE.get(), Zonkey.createAttributes().build());
+		event.put(ZONKEY.get(), Zonkey.createAttributes().build());
 		event.put(PINECONE_GOLEM.get(), PineconeGolem.createAttributes().build());
 	}
 }

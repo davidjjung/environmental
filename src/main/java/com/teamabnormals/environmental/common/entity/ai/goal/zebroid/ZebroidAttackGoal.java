@@ -1,15 +1,16 @@
-package com.teamabnormals.environmental.common.entity.ai.goal.zebra;
+package com.teamabnormals.environmental.common.entity.ai.goal.zebroid;
 
-import com.teamabnormals.environmental.common.entity.animal.Zebra;
+import com.teamabnormals.environmental.common.entity.animal.zebroid.Zebroid;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.animal.horse.AbstractHorse;
 import net.minecraft.world.level.pathfinder.Path;
 
-public class ZebraAttackGoal extends MeleeAttackGoal {
+public class ZebroidAttackGoal<Z extends AbstractHorse & Zebroid> extends MeleeAttackGoal {
 
-	public ZebraAttackGoal(Zebra zebra, double speed) {
-		super(zebra, speed, true);
+	public ZebroidAttackGoal(Z zebroid, double speed) {
+		super(zebroid, speed, true);
 	}
 
 	@Override
@@ -64,8 +65,8 @@ public class ZebraAttackGoal extends MeleeAttackGoal {
 			this.mob.yRotO = this.mob.getYRot();
 			this.mob.yBodyRot = this.mob.getYRot();
 			this.mob.yHeadRot = this.mob.yBodyRot;
-			((Zebra) this.mob).kick(false);
-			((Zebra) this.mob).playKickingSound();
+			((Zebroid) this.mob).kick(false);
+			((Zebroid) this.mob).playKickingSound();
 		}
 	}
 }
