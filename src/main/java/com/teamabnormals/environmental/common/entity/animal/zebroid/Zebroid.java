@@ -94,6 +94,26 @@ public interface Zebroid {
 		return Mth.lerp(partialTick, this.getFrontKickAnimO(), this.getFrontKickAnim());
 	}
 
+	default float getBackKickBodyRot(float partialTick) {
+		float anim = this.getBackKickAnim(partialTick);
+		return anim < 5 ? smoothAnim(0F, 5F, anim) : anim < 6 ? 1F : smoothAnim(10F, 6F, anim);
+	}
+
+	default float getBackKickLegRot(float partialTick) {
+		float anim = this.getBackKickAnim(partialTick);
+		return anim < 5 ? smoothAnim(0F, 5F, anim) : anim < 8 ? smoothAnim(8F, 5F, anim) : 0F;
+	}
+
+	default float getFrontKickBodyRot(float partialTick) {
+		float anim = this.getFrontKickAnim(partialTick);
+		return anim < 6 ? smoothAnim(0F, 6F, anim) : anim < 8 ? 1F : smoothAnim(12F, 8F, anim);
+	}
+
+	default float getFrontKickLegRot(float partialTick) {
+		float anim = this.getFrontKickAnim(partialTick);
+		return anim < 6 ? smoothAnim(0F, 6F, anim) : anim < 7 ? 1F : anim < 10 ? smoothAnim(10F, 7F, anim) : 0F;
+	}
+
 	default void playBackKickAnim() {
 		this.setBackKickAnim(10);
 		this.setFrontKickAnim(0);
@@ -359,26 +379,6 @@ public interface Zebroid {
 		}
 
 		function.accept(rider, horse.getX() + (double) (f2 * f), horse.getY() + horse.getPassengersRidingOffset() + rider.getMyRidingOffset() + (double) f3, horse.getZ() - (double) (f2 * f1));
-	}
-
-	default float getBackKickBodyRot(float partialTick) {
-		float anim = this.getBackKickAnim(partialTick);
-		return anim < 5 ? smoothAnim(0F, 5F, anim) : anim < 6 ? 1F : smoothAnim(10F, 6F, anim);
-	}
-
-	default float getBackKickLegRot(float partialTick) {
-		float anim = this.getBackKickAnim(partialTick);
-		return anim < 5 ? smoothAnim(0F, 5F, anim) : anim < 8 ? smoothAnim(8F, 5F, anim) : 0F;
-	}
-
-	default float getFrontKickBodyRot(float partialTick) {
-		float anim = this.getFrontKickAnim(partialTick);
-		return anim < 6 ? smoothAnim(0F, 6F, anim) : anim < 8 ? 1F : smoothAnim(12F, 8F, anim);
-	}
-
-	default float getFrontKickLegRot(float partialTick) {
-		float anim = this.getFrontKickAnim(partialTick);
-		return anim < 6 ? smoothAnim(0F, 6F, anim) : anim < 7 ? 1F : anim < 10 ? smoothAnim(10F, 7F, anim) : 0F;
 	}
 
 	static float smoothAnim(float min, float max, float progress) {

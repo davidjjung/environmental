@@ -41,8 +41,8 @@ import java.util.UUID;
 import java.util.function.IntUnaryOperator;
 
 public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid {
-	private static final float MIN_DAMAGE = generateAttackDamage(value -> 0);
-	private static final float MAX_DAMAGE = generateAttackDamage(value -> value - 1);
+	public static final float MIN_DAMAGE = generateAttackDamage(value -> 0);
+	public static final float MAX_DAMAGE = generateAttackDamage(value -> value - 1);
 
 	private static final EntityDataAccessor<Integer> KICK_TIME = SynchedEntityData.defineId(Zonkey.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> STRIPE_OPACITY = SynchedEntityData.defineId(Zonkey.class, EntityDataSerializers.INT);
@@ -112,6 +112,10 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
 		this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
 		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(generateAttackDamage(random::nextInt));
+	}
+
+	private static float generateAttackDamage(IntUnaryOperator random) {
+		return 1.0F + random.applyAsInt(2);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {
@@ -268,11 +272,6 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 		return result == InteractionResult.PASS ? super.fedFood(player, stack) : result;
 	}
 
-	// TODO: Add downsides
-	protected static float generateAttackDamage(IntUnaryOperator random) {
-		return 1.0F + random.applyAsInt(2) + random.applyAsInt(2) + random.applyAsInt(2);
-	}
-
 	@Override
 	public void setLeashedTo(Entity entity, boolean broadcast) {
 		super.setLeashedTo(entity, broadcast);
@@ -421,5 +420,15 @@ public class Zonkey extends AbstractChestedHorse implements NeutralMob, Zebroid 
 	public void setOffspringAttributes(AgeableMob otherParent, AbstractHorse child) {
 		super.setOffspringAttributes(otherParent, child);
 		this.setOffspringAttribute(otherParent, child, Attributes.ATTACK_DAMAGE, MIN_DAMAGE, MAX_DAMAGE);
+	}
+
+	@Override
+	protected int getInventorySize() {
+		return this.hasChest() ? 11 : 2;
+	}
+
+	@Override
+	public int getInventoryColumns() {
+		return 3;
 	}
 }

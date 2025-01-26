@@ -15,9 +15,12 @@ import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.animal.horse.Variant;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.Map;
 
+@OnlyIn(Dist.CLIENT)
 public class ZorseStripesRenderLayer extends RenderLayer<Zorse, ZorseModel<Zorse>> {
 	private static final Map<Variant, ResourceLocation> LOCATION_BY_VARIANT = Util.make(Maps.newEnumMap(Variant.class), (map) -> {
 		map.put(Variant.WHITE, new ResourceLocation(Environmental.MOD_ID, "textures/entity/zebroid/zorse_overlay_white.png"));

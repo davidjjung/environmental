@@ -19,18 +19,22 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.FollowParentGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.animal.horse.AbstractHorse;
-import net.minecraft.world.entity.animal.horse.Horse;
 import net.minecraft.world.entity.animal.horse.Markings;
 import net.minecraft.world.entity.animal.horse.Variant;
 import net.minecraft.world.item.HorseArmorItem;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 
 import javax.annotation.Nullable;
 import java.util.UUID;
+import java.util.function.IntUnaryOperator;
 
 public class Zorse extends AbstractUnchestedZebroid implements VariantHolder<Variant> {
+	public static final float MIN_DAMAGE = generateAttackDamage(value -> 0);
+	public static final float MAX_DAMAGE = generateAttackDamage(value -> value - 1);
+
 	private static final UUID ARMOR_MODIFIER_UUID = UUID.fromString("6CEF6F73-493A-491E-B49C-BA4B2F8ABEB6");
 	private static final EntityDataAccessor<Integer> DATA_ID_TYPE_VARIANT = SynchedEntityData.defineId(Zorse.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Integer> STRIPE_OPACITY = SynchedEntityData.defineId(Zorse.class, EntityDataSerializers.INT);
@@ -48,6 +52,18 @@ public class Zorse extends AbstractUnchestedZebroid implements VariantHolder<Var
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return AbstractHorse.createBaseHorseAttributes().add(Attributes.ATTACK_DAMAGE).add(Attributes.ATTACK_KNOCKBACK, 1.0D).add(Attributes.FOLLOW_RANGE, 8.0D);
+	}
+
+	@Override
+	protected void randomizeAttributes(RandomSource random) {
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
+		this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
+		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(generateAttackDamage(random::nextInt));
+	}
+
+	private static float generateAttackDamage(IntUnaryOperator random) {
+		return 1.0F + random.applyAsInt(2);
 	}
 
 	@Override
@@ -143,11 +159,10 @@ public class Zorse extends AbstractUnchestedZebroid implements VariantHolder<Var
 			if (this.isArmor(stack)) {
 				int i = ((HorseArmorItem)stack.getItem()).getProtection();
 				if (i != 0) {
-					this.getAttribute(Attributes.ARMOR).addTransientModifier(new AttributeModifier(ARMOR_MODIFIER_UUID, "Horse armor bonus", (double)i, AttributeModifier.Operation.ADDITION));
+					this.getAttribute(Attributes.ARMOR).addTransientModifier(new AttributeModifier(ARMOR_MODIFIER_UUID, "Horse armor bonus", i, AttributeModifier.Operation.ADDITION));
 				}
 			}
 		}
-
 	}
 
 	@Override
@@ -167,7 +182,7 @@ public class Zorse extends AbstractUnchestedZebroid implements VariantHolder<Var
 
 	@Override
 	public boolean isArmor(ItemStack stack) {
-		return stack.getItem() instanceof HorseArmorItem;
+		return stack.is(Items.LEATHER_HORSE_ARMOR);
 	}
 
 	@Override

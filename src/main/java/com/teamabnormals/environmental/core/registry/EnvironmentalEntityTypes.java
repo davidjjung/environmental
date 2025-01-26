@@ -72,7 +72,7 @@ public class EnvironmentalEntityTypes {
 		// event.put(FENNEC_FOX.get(), Fox.createAttributes().build());
 		event.put(TAPIR.get(), Tapir.createAttributes().build());
 		event.put(ZEBRA.get(), Zebra.createAttributes().build());
-		event.put(ZORSE.get(), Zonkey.createAttributes().build());
+		event.put(ZORSE.get(), Zorse.createAttributes().build());
 		event.put(ZONKEY.get(), Zonkey.createAttributes().build());
 		event.put(PINECONE_GOLEM.get(), PineconeGolem.createAttributes().build());
 	}

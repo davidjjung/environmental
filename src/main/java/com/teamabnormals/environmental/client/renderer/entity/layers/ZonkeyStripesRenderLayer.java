@@ -12,7 +12,10 @@ import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class ZonkeyStripesRenderLayer extends RenderLayer<Zonkey, ZonkeyModel<Zonkey>> {
 	private static final ResourceLocation STRIPES_LOCATION = new ResourceLocation(Environmental.MOD_ID, "textures/entity/zebroid/zonkey_overlay.png");
 

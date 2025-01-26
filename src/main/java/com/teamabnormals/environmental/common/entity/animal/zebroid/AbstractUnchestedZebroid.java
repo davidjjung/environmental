@@ -9,7 +9,6 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
-import net.minecraft.util.RandomSource;
 import net.minecraft.util.TimeUtil;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.InteractionHand;
@@ -19,7 +18,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.NeutralMob;
-import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.ResetUniversalAngerTargetGoal;
@@ -35,12 +33,8 @@ import net.minecraft.world.phys.Vec3;
 
 import java.util.Optional;
 import java.util.UUID;
-import java.util.function.IntUnaryOperator;
 
 public abstract class AbstractUnchestedZebroid extends AbstractHorse implements NeutralMob, Zebroid {
-	protected static final float MIN_DAMAGE = generateAttackDamage(value -> 0);
-	protected static final float MAX_DAMAGE = generateAttackDamage(value -> value - 1);
-
 	private static final EntityDataAccessor<Integer> KICK_TIME = SynchedEntityData.defineId(AbstractUnchestedZebroid.class, EntityDataSerializers.INT);
 	private static final EntityDataAccessor<Optional<UUID>> ANGRY_AT = SynchedEntityData.defineId(AbstractUnchestedZebroid.class, EntityDataSerializers.OPTIONAL_UUID);
 
@@ -100,14 +94,6 @@ public abstract class AbstractUnchestedZebroid extends AbstractHorse implements 
 	public void readAdditionalSaveData(CompoundTag compound) {
 		super.readAdditionalSaveData(compound);
 		this.readPersistentAngerSaveData(this.level(), compound);
-	}
-
-	@Override
-	protected void randomizeAttributes(RandomSource random) {
-		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
-		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
-		this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
-		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(generateAttackDamage(random::nextInt));
 	}
 
 	// Zebroid getters and setters
@@ -252,10 +238,6 @@ public abstract class AbstractUnchestedZebroid extends AbstractHorse implements 
 	public InteractionResult fedFood(Player player, ItemStack stack) {
 		InteractionResult result = this.handleFedFood(player, stack);
 		return result == InteractionResult.PASS ? super.fedFood(player, stack) : result;
-	}
-
-	protected static float generateAttackDamage(IntUnaryOperator random) {
-		return 1.0F + random.applyAsInt(2) + random.applyAsInt(2) + random.applyAsInt(2);
 	}
 
 	@Override

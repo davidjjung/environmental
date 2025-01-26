@@ -9,17 +9,19 @@
     "BlockColumnFeatureMixin",
     "CarvedPumpkinBlockMixin",
     "DamageSourceMixin",
-	"DonkeyMixin",
+    "DonkeyMixin",
     "GrassBlockMixin",
-	"HorseMixin",
+    "HorseMixin",
     "LivingEntityMixin",
     "MoveControlMixin",
+    "MuleMixin",
     "PigMixin",
     "PinkPetalsBlockMixin",
     "ShearsItemMixin",
     "SurfaceSystemMixin"
   ],
   "client": [
+    "client.ChestedHorseRendererMixin",
     "client.PigRendererMixin"
   ],
   "injectors": {

@@ -6,6 +6,7 @@ import com.teamabnormals.environmental.common.entity.ai.goal.zebroid.ZebroidFoll
 import com.teamabnormals.environmental.core.registry.EnvironmentalEntityTypes;
 import net.minecraft.Util;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -18,8 +19,12 @@ import net.minecraft.world.level.Level;
 import javax.annotation.Nullable;
 import java.util.Comparator;
 import java.util.List;
+import java.util.function.IntUnaryOperator;
 
 public class Zebra extends AbstractUnchestedZebroid {
+	private static final float MIN_DAMAGE = generateAttackDamage(value -> 0);
+	private static final float MAX_DAMAGE = generateAttackDamage(value -> value - 1);
+
 	private ZebraFleeGoal fleeGoal;
 
 	public Zebra(EntityType<? extends AbstractHorse> entityType, Level level) {
@@ -36,6 +41,18 @@ public class Zebra extends AbstractUnchestedZebroid {
 
 	public static AttributeSupplier.Builder createAttributes() {
 		return AbstractHorse.createBaseHorseAttributes().add(Attributes.ATTACK_DAMAGE).add(Attributes.ATTACK_KNOCKBACK, 1.0D).add(Attributes.FOLLOW_RANGE, 8.0D);
+	}
+
+	@Override
+	protected void randomizeAttributes(RandomSource random) {
+		this.getAttribute(Attributes.MAX_HEALTH).setBaseValue(generateMaxHealth(random::nextInt));
+		this.getAttribute(Attributes.MOVEMENT_SPEED).setBaseValue(generateSpeed(random::nextDouble));
+		this.getAttribute(Attributes.JUMP_STRENGTH).setBaseValue(generateJumpStrength(random::nextDouble));
+		this.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(generateAttackDamage(random::nextInt));
+	}
+
+	private static float generateAttackDamage(IntUnaryOperator random) {
+		return 1.0F + random.applyAsInt(2) + random.applyAsInt(2) + random.applyAsInt(2);
 	}
 
 	@Override
@@ -123,7 +140,14 @@ public class Zebra extends AbstractUnchestedZebroid {
 	@Override
 	public void setOffspringAttributes(AgeableMob otherParent, AbstractHorse child) {
 		super.setOffspringAttributes(otherParent, child);
-		this.setOffspringAttribute(otherParent instanceof Zebra ? otherParent : this, child, Attributes.ATTACK_DAMAGE, MIN_DAMAGE, MAX_DAMAGE);
+		double d0;
+		if (otherParent instanceof Horse)
+			d0 = createOffspringAttribute(this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE), 0.0D, Zorse.MIN_DAMAGE, Zorse.MAX_DAMAGE, this.random);
+		else if (otherParent instanceof Donkey)
+			d0 = createOffspringAttribute(this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE), 0.0D, Zonkey.MIN_DAMAGE, Zonkey.MAX_DAMAGE, this.random);
+		else
+			d0 = createOffspringAttribute(this.getAttributeBaseValue(Attributes.ATTACK_DAMAGE), 0.0D, MIN_DAMAGE, MAX_DAMAGE, this.random);
+		child.getAttribute(Attributes.ATTACK_DAMAGE).setBaseValue(d0);
 	}
 
 	@Override

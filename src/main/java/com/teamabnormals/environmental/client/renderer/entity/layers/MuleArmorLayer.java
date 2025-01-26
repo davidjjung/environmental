@@ -2,9 +2,9 @@ package com.teamabnormals.environmental.client.renderer.entity.layers;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.teamabnormals.environmental.client.model.ZorseModel;
-import com.teamabnormals.environmental.common.entity.animal.zebroid.Zorse;
 import com.teamabnormals.environmental.core.other.EnvironmentalModelLayers;
+import net.minecraft.client.model.ChestedHorseModel;
+import net.minecraft.client.model.HorseModel;
 import net.minecraft.client.model.geom.EntityModelSet;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -12,6 +12,9 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.entity.RenderLayerParent;
 import net.minecraft.client.renderer.entity.layers.RenderLayer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.animal.horse.AbstractChestedHorse;
+import net.minecraft.world.entity.animal.horse.Mule;
 import net.minecraft.world.item.DyeableHorseArmorItem;
 import net.minecraft.world.item.HorseArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -21,21 +24,24 @@ import net.minecraftforge.fml.ModList;
 import org.violetmoon.quark.content.tools.module.ColorRunesModule;
 
 @OnlyIn(Dist.CLIENT)
-public class ZorseArmorLayer extends RenderLayer<Zorse, ZorseModel<Zorse>> {
-	private final ZorseModel<Zorse> model;
+public class MuleArmorLayer<T extends AbstractChestedHorse> extends RenderLayer<T, ChestedHorseModel<T>> {
+	private final HorseModel<T> model;
 
-	public ZorseArmorLayer(RenderLayerParent<Zorse, ZorseModel<Zorse>> entityRenderer, EntityModelSet modelSet) {
+	public MuleArmorLayer(RenderLayerParent<T, ChestedHorseModel<T>> entityRenderer, EntityModelSet modelSet) {
 		super(entityRenderer);
-		this.model = new ZorseModel<>(modelSet.bakeLayer(EnvironmentalModelLayers.ZORSE_ARMOR));
+		this.model = new ChestedHorseModel<>(modelSet.bakeLayer(EnvironmentalModelLayers.MULE_ARMOR));
 	}
 
-	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, Zorse zorse, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
-		ItemStack itemstack = zorse.getArmor();
+	public void render(PoseStack poseStack, MultiBufferSource buffer, int packedLight, T mule, float limbSwing, float limbSwingAmount, float partialTick, float ageInTicks, float netHeadYaw, float headPitch) {
+		if (!(mule instanceof Mule))
+			return;
+
+		ItemStack itemstack = mule.getItemBySlot(EquipmentSlot.CHEST);
 		if (itemstack.getItem() instanceof HorseArmorItem) {
 			HorseArmorItem horsearmoritem = (HorseArmorItem)itemstack.getItem();
 			this.getParentModel().copyPropertiesTo(this.model);
-			this.model.prepareMobModel(zorse, limbSwing, limbSwingAmount, partialTick);
-			this.model.setupAnim(zorse, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
+			this.model.prepareMobModel(mule, limbSwing, limbSwingAmount, partialTick);
+			this.model.setupAnim(mule, limbSwing, limbSwingAmount, ageInTicks, netHeadYaw, headPitch);
 			float f;
 			float f1;
 			float f2;
@@ -50,7 +56,7 @@ public class ZorseArmorLayer extends RenderLayer<Zorse, ZorseModel<Zorse>> {
 				f2 = 1.0F;
 			}
 
-			ItemStack stack = zorse.getArmor();
+			ItemStack stack = mule.getItemBySlot(EquipmentSlot.CHEST);
 			setColorRuneTarget(stack);
 			HorseArmorItem horseArmorItem = (HorseArmorItem) stack.getItem();
 			VertexConsumer vertexconsumer = ItemRenderer.getFoilBufferDirect(buffer, RenderType.entityCutoutNoCull(horseArmorItem.getTexture()), false, stack.hasFoil());
