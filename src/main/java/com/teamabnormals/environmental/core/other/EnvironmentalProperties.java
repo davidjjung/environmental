@@ -51,7 +51,7 @@ public class EnvironmentalProperties {
 	public static final BlockBehaviour.Properties CACTUS_BOBBLE = BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.WOOL).ignitedByLava().pushReaction(PushReaction.DESTROY);
 	public static final BlockBehaviour.Properties DWARF_SPRUCE = BlockBehaviour.Properties.of().noCollission().instabreak().sound(SoundType.GRASS).pushReaction(PushReaction.DESTROY);
 
-	public static final BlockBehaviour.Properties DELPHINIUMS = BlockBehaviour.Properties.of().replaceable().noCollission().instabreak().sound(SoundType.GRASS).ignitedByLava().pushReaction(PushReaction.DESTROY);
+	public static final BlockBehaviour.Properties TALL_FLOWERS = PropertyUtil.flower().ignitedByLava();
 	public static final BlockBehaviour.Properties WALL_HIBISCUS = wallHibiscus();
 
 	public static final BlockBehaviour.Properties PINECONE = Block.Properties.of().mapColor(MapColor.DIRT).strength(1.5F).sound(SoundType.WOOD).ignitedByLava();

@@ -165,11 +165,11 @@ public class EnvironmentalBlocks {
 
 	// Tall Flowers //
 
-	public static final RegistryObject<Block> PINK_DELPHINIUM = HELPER.createBlock("pink_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.DELPHINIUMS));
-	public static final RegistryObject<Block> BLUE_DELPHINIUM = HELPER.createBlock("blue_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.DELPHINIUMS));
-	public static final RegistryObject<Block> PURPLE_DELPHINIUM = HELPER.createBlock("purple_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.DELPHINIUMS));
-	public static final RegistryObject<Block> WHITE_DELPHINIUM = HELPER.createBlock("white_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.DELPHINIUMS));
-	public static final RegistryObject<Block> BIRD_OF_PARADISE = HELPER.createBlock("bird_of_paradise", () -> new TallFlowerBlock(PropertyUtil.flower()));
+	public static final RegistryObject<Block> PINK_DELPHINIUM = HELPER.createBlock("pink_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.TALL_FLOWERS));
+	public static final RegistryObject<Block> BLUE_DELPHINIUM = HELPER.createBlock("blue_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.TALL_FLOWERS));
+	public static final RegistryObject<Block> PURPLE_DELPHINIUM = HELPER.createBlock("purple_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.TALL_FLOWERS));
+	public static final RegistryObject<Block> WHITE_DELPHINIUM = HELPER.createBlock("white_delphinium", () -> new TallFlowerBlock(EnvironmentalProperties.TALL_FLOWERS));
+	public static final RegistryObject<Block> BIRD_OF_PARADISE = HELPER.createBlock("bird_of_paradise", () -> new TallFlowerBlock(EnvironmentalProperties.TALL_FLOWERS));
 
 	public static final RegistryObject<Block> POTTED_PINK_DELPHINIUM = HELPER.createBlockNoItem("potted_pink_delphinium", () -> new FlowerPotBlock(PINK_DELPHINIUM.get(), PropertyUtil.flowerPot()));
 	public static final RegistryObject<Block> POTTED_BLUE_DELPHINIUM = HELPER.createBlockNoItem("potted_blue_delphinium", () -> new FlowerPotBlock(BLUE_DELPHINIUM.get(), PropertyUtil.flowerPot()));
