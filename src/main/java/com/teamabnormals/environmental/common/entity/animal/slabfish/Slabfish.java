@@ -215,6 +215,7 @@ public class Slabfish extends TamableAnimal implements ContainerListener, Bucket
 
 					this.slabfishBackpack.setItem(2, new ItemStack(item));
 					this.usePlayerItem(player, hand, stack);
+					this.playBackpackDyeSound();
 				}
 				return InteractionResult.SUCCESS;
 			}
@@ -487,6 +488,10 @@ public class Slabfish extends TamableAnimal implements ContainerListener, Bucket
 
 	protected void playBackpackSound() {
 		this.playSound(EnvironmentalSoundEvents.SLABFISH_BACKPACK.get(), 1.0F, (this.random.nextFloat() - this.random.nextFloat()) * 0.2F + 1.0F);
+	}
+
+	protected void playBackpackDyeSound() {
+		this.playSound(SoundEvents.DYE_USE, 1.0F, 1.0F);
 	}
 
 	protected void playSweaterSound() {
