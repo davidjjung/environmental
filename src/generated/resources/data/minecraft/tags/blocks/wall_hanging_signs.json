@@ -1,8 +1,8 @@
 {
   "values": [
     "environmental:willow_wall_hanging_sign",
-    "environmental:pine_hanging_sign",
+    "environmental:pine_wall_hanging_sign",
     "environmental:plum_wall_hanging_sign",
-    "environmental:wisteria_hanging_sign"
+    "environmental:wisteria_wall_hanging_sign"
   ]
 }

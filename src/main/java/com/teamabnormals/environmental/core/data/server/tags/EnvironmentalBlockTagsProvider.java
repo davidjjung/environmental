@@ -79,7 +79,7 @@ public class EnvironmentalBlockTagsProvider extends BlockTagsProvider {
 		this.tag(BlockTags.STANDING_SIGNS).add(WILLOW_SIGNS.getFirst().get(), PINE_SIGNS.getFirst().get(), WISTERIA_SIGNS.getFirst().get(), PLUM_SIGNS.getFirst().get());
 		this.tag(BlockTags.WALL_SIGNS).add(WILLOW_SIGNS.getSecond().get(), PINE_SIGNS.getSecond().get(), WISTERIA_SIGNS.getSecond().get(), PLUM_SIGNS.getSecond().get());
 		this.tag(BlockTags.CEILING_HANGING_SIGNS).add(WILLOW_HANGING_SIGNS.getFirst().get(), PINE_HANGING_SIGNS.getFirst().get(), PLUM_HANGING_SIGNS.getFirst().get(), WISTERIA_HANGING_SIGNS.getFirst().get());
-		this.tag(BlockTags.WALL_HANGING_SIGNS).add(WILLOW_HANGING_SIGNS.getSecond().get(), PINE_HANGING_SIGNS.getFirst().get(), PLUM_HANGING_SIGNS.getSecond().get(), WISTERIA_HANGING_SIGNS.getFirst().get());
+		this.tag(BlockTags.WALL_HANGING_SIGNS).add(WILLOW_HANGING_SIGNS.getSecond().get(), PINE_HANGING_SIGNS.getSecond().get(), PLUM_HANGING_SIGNS.getSecond().get(), WISTERIA_HANGING_SIGNS.getSecond().get());
 
 		this.tag(BlockTags.REPLACEABLE).add(Blocks.PINK_PETALS, HANGING_WILLOW_LEAVES.get(), PINK_HANGING_WISTERIA_LEAVES.get(), BLUE_HANGING_WISTERIA_LEAVES.get(), PURPLE_HANGING_WISTERIA_LEAVES.get(), WHITE_HANGING_WISTERIA_LEAVES.get(), GIANT_TALL_GRASS.get(), MYCELIUM_SPROUTS.get(), CUP_LICHEN.get(), BIRD_OF_PARADISE.get(), PINK_DELPHINIUM.get(), BLUE_DELPHINIUM.get(), PURPLE_DELPHINIUM.get(), WHITE_DELPHINIUM.get(), CACTUS_BOBBLE.get());
 		this.tag(BlockTags.CLIMBABLE).add(PINK_HANGING_WISTERIA_LEAVES.get(), PURPLE_HANGING_WISTERIA_LEAVES.get(), BLUE_HANGING_WISTERIA_LEAVES.get(), WHITE_HANGING_WISTERIA_LEAVES.get());
