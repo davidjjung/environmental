@@ -267,7 +267,6 @@ public class Slabfish extends TamableAnimal implements ContainerListener, Bucket
 
 			if (Ingredient.of(EnvironmentalItemTags.SLABFISH_SNACKS).test(stack)) {
 				stack.finishUsingItem(this.level(), this);
-				this.usePlayerItem(player, hand, stack);
 				this.level().playLocalSound(this.getX(), this.getY(), this.getZ(), EnvironmentalSoundEvents.SLABFISH_EAT.get(), SoundSource.NEUTRAL, 1F, 1F, true);
 				return InteractionResult.SUCCESS;
 			}
