@@ -2,11 +2,11 @@
   "values": [
     "minecraft:chorus_fruit",
     {
-      "id": "atmospheric:passionfruit",
+      "id": "atmospheric:passion_fruit",
       "required": false
     },
     {
-      "id": "atmospheric:shimmering_passionfruit",
+      "id": "atmospheric:shimmering_passion_fruit",
       "required": false
     },
     {

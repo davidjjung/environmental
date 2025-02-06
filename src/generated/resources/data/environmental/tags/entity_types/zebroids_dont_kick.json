@@ -5,6 +5,8 @@
     "environmental:zonkey",
     "minecraft:horse",
     "minecraft:donkey",
-    "minecraft:mule"
+    "minecraft:mule",
+    "minecraft:zombie_horse",
+    "minecraft:skeleton_horse"
   ]
 }
